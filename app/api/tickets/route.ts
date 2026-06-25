@@ -12,8 +12,8 @@ export async function GET() {
   console.log('[/api/tickets] JIRA_PROJECT_KEY:', process.env.JIRA_PROJECT_KEY ?? 'UNDEFINED')
 
   try {
-    const projectKey = process.env.JIRA_PROJECT_KEY ?? 'SCRUM'
-    const tickets = await listRecentTickets(projectKey, 20)
+    const projectKey = 'SCRUM'
+    const tickets = await listRecentTickets(projectKey, 50)
     console.log('[/api/tickets] success — ticket count:', tickets.length)
     return NextResponse.json({ tickets })
   } catch (err) {

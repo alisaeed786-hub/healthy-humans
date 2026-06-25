@@ -33,6 +33,10 @@ export async function POST(req: NextRequest) {
 
     updateAnalysisFields(ticket.key, analysis, query)
 
+    const escalationMessage = analysis.assumedCount >= 4
+      ? `This ticket has ${analysis.assumedCount} assumptions. Resolve the assumed items before presenting to the team.`
+      : undefined
+
     return NextResponse.json({
       ticket,
       analysis,
@@ -42,11 +46,12 @@ export async function POST(req: NextRequest) {
         url: p.url,
         space: p.space,
         excerpt: p.excerpt
-      }))
+      })),
+      escalationMessage
     })
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err)
-    console.error('[analyze]', message)
+    console.error('[refine]', message)
     return NextResponse.json({ error: message }, { status: 500 })
   }
 }

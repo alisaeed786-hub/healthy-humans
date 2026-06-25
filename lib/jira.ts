@@ -1,3 +1,5 @@
+import type { AgentResult } from './agents'
+
 const BASE_URL = process.env.JIRA_BASE_URL!
 const EMAIL = process.env.JIRA_EMAIL!
 const TOKEN = process.env.JIRA_API_TOKEN!
@@ -102,7 +104,7 @@ function mapIssues(issues: Record<string, unknown>[]) {
   })
 }
 
-export async function listRecentTickets(projectKey: string, maxResults = 20) {
+export async function listRecentTickets(projectKey: string, maxResults = 50) {
   const params = new URLSearchParams({
     jql: `project=${projectKey} ORDER BY updated DESC`,
     fields: TICKET_FIELDS.join(','),
@@ -128,4 +130,34 @@ export async function listRecentTickets(projectKey: string, maxResults = 20) {
   console.log('[jira] listRecentTickets — total:', data.total, '| returned:', data.issues?.length ?? 0)
 
   return mapIssues(data.issues ?? [])
+}
+
+export async function updateAnalysisFields(
+  ticketKey: string,
+  analysis: AgentResult,
+  searchQuery: string
+): Promise<void> {
+  const url = `${process.env.JIRA_BASE_URL}/rest/api/3/issue/${ticketKey}`
+  const auth = 'Basic ' + Buffer.from(`${process.env.JIRA_EMAIL}:${process.env.JIRA_API_TOKEN}`).toString('base64')
+
+  const jiraDate = new Date().toISOString().replace('Z', '+0000')
+
+  fetch(url, {
+    method: 'PUT',
+    headers: {
+      Authorization: auth,
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    },
+    body: JSON.stringify({
+      fields: {
+        customfield_10080: analysis.status,
+        customfield_10075: analysis.assumedCount,
+        customfield_10076: analysis.verifiedCount,
+        customfield_10077: searchQuery,
+        customfield_10078: jiraDate,
+        customfield_10079: analysis.confluencePageTitles.join(', ')
+      }
+    })
+  }).catch(err => console.error('[jira] custom field update failed:', err.message))
 }

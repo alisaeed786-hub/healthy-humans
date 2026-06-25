@@ -86,7 +86,7 @@ Be specific. Reference the Confluence context where relevant. Return only the JS
 
   const message = await client.messages.create({
     model: 'claude-sonnet-4-6',
-    max_tokens: 4096,
+    max_tokens: 8000,
     system: SYSTEM_PROMPT,
     messages: [{ role: 'user', content: userPrompt }],
   })

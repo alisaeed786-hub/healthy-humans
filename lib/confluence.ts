@@ -29,12 +29,13 @@ function stripHtml(html: string): string {
 
 export async function searchConfluence(
   query: string,
-  limit = 5
+  limit = 3
 ): Promise<ConfluencePage[]> {
-  // Use Confluence CQL to search across all spaces
-  const cql = encodeURIComponent(
-    `type = page AND text ~ "${query.replace(/"/g, '')}" ORDER BY lastModified DESC`
-  )
+  const words = query.replace(/"/g, '').split(/\s+/).filter(w => w.length >= 4).slice(0, 5)
+  const cqlInner = words.length >= 2
+    ? `(${words.map(w => `text ~ "${w}"`).join(' OR ')})`
+    : `text ~ "${query.replace(/"/g, '')}"`
+  const cql = encodeURIComponent(`type = page AND ${cqlInner} ORDER BY lastModified DESC`)
   const url = `${BASE_URL}/wiki/rest/api/content/search?cql=${cql}&limit=${limit}&expand=body.storage,space,excerpt`
 
   const res = await fetch(url, {
@@ -65,7 +66,7 @@ export async function searchConfluence(
       title: page.title as string,
       url: `${BASE_URL}/wiki${links?.webui ?? ''}`,
       excerpt: stripHtml((page.excerpt as string) ?? ''),
-      body: fullText.slice(0, 4000), // cap per page to stay within token budget
+      body: fullText.slice(0, 1500), // cap per page to stay within token budget
       space: (spaceObj?.name as string) ?? '',
     }
   })
