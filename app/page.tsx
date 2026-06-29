@@ -1,690 +1,484 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
-import DiffView from '@/components/DiffView'
+import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
 
-interface RecentTicket {
-  key: string
-  summary: string
-  status: string
-  type: string
-  priority: string
+function Pill({ children }: { children: React.ReactNode }) {
+  return (
+    <span style={{
+      display: 'inline-block', padding: '3px 12px', borderRadius: 999,
+      border: '1px solid #334155', fontSize: 12, fontWeight: 500,
+      color: '#94A3B8', letterSpacing: '0.02em', whiteSpace: 'nowrap',
+    }}>
+      {children}
+    </span>
+  )
 }
 
-interface ConfluencePage {
-  id: string
-  title: string
-  url: string
-  space: string
-  excerpt: string
+function VerifiedRow({ text }: { text: string }) {
+  return (
+    <div style={{
+      display: 'flex', gap: 10, alignItems: 'flex-start',
+      padding: '10px 14px', background: '#052E16',
+      border: '1px solid #064E3B', borderRadius: 8, marginBottom: 8,
+    }}>
+      <span style={{ color: '#059669', fontWeight: 700, fontSize: 13, flexShrink: 0, marginTop: 2 }}>✓</span>
+      <span style={{ fontSize: 13, color: '#86EFAC', lineHeight: 1.6 }}>{text}</span>
+    </div>
+  )
 }
 
-interface VerifiedItem {
-  claim: string
-  source: string
-  quote: string
+function AssumedRow({ text, action }: { text: string; action: string }) {
+  return (
+    <div style={{
+      display: 'flex', gap: 10, alignItems: 'flex-start',
+      padding: '10px 14px', background: '#1C1107',
+      border: '1px solid #92400E', borderRadius: 8, marginBottom: 8,
+    }}>
+      <span style={{ color: '#D97706', fontWeight: 700, fontSize: 13, flexShrink: 0, marginTop: 2 }}>≈</span>
+      <div style={{ minWidth: 0 }}>
+        <div style={{ fontSize: 13, color: '#FCD34D', lineHeight: 1.6 }}>{text}</div>
+        <div style={{ fontSize: 12, color: '#D97706', marginTop: 4, lineHeight: 1.5 }}>→ {action}</div>
+      </div>
+    </div>
+  )
 }
 
-interface AssumedItem {
-  claim: string
-  reason: string
-  pmAction: string
-}
+function GlowCursor() {
+  useEffect(() => {
+    const cursor = document.createElement('div')
+    cursor.id = 'glow-cursor'
+    cursor.style.cssText = `
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(99,102,241,0.6);
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+      filter: blur(4px);
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+    `
+    document.body.appendChild(cursor)
 
-interface RefinedTicket {
-  summary: string
-  description: string
-  acceptanceCriteria: string[]
-  outOfScope: string[]
-  assumptions: string[]
-}
+    const trail = document.createElement('div')
+    trail.id = 'glow-trail'
+    trail.style.cssText = `
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(99,102,241,0.15);
+      pointer-events: none;
+      z-index: 9998;
+      transition: left 0.12s ease, top 0.12s ease, width 0.2s ease, height 0.2s ease;
+      filter: blur(8px);
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+    `
+    document.body.appendChild(trail)
 
-interface AgentResult {
-  status: 'ready' | 'caution' | 'not_ready'
-  verifiedCount: number
-  assumedCount: number
-  verified: VerifiedItem[]
-  assumed: AssumedItem[]
-  structuralIssues: string[]
-  refinedTicket: RefinedTicket
-  diff: {
-    summary: { original: string, revised: string }
-    description: { original: string, revised: string }
-    acceptanceCriteria: { original: string, revised: string }
-  }
-  confluenceLinks: string[]
-  confluencePageCount: number
-  confluencePageTitles: string[]
-  escalationMessage?: string
-  error?: string
-}
+    let trailX = 0, trailY = 0
 
-interface JiraTicket {
-  key: string
-  summary: string
-  description: string
-  issueType: string
-  status: string
-  priority: string
-  acceptanceCriteria: string
-  labels: string[]
-  components: string[]
-  storyPoints: number | null
-}
+    const moveCursor = (e: MouseEvent) => {
+      cursor.style.left = e.clientX + 'px'
+      cursor.style.top = e.clientY + 'px'
+      trailX += (e.clientX - trailX) * 0.15
+      trailY += (e.clientY - trailY) * 0.15
+      trail.style.left = trailX + 'px'
+      trail.style.top = trailY + 'px'
+    }
 
-interface AnalyzeResult {
-  ticket: JiraTicket
-  analysis: AgentResult
-  confluencePages: ConfluencePage[]
-}
+    const onEnterClickable = () => {
+      cursor.style.width = '32px'
+      cursor.style.height = '32px'
+      cursor.style.background = 'rgba(99,102,241,0.9)'
+      trail.style.width = '64px'
+      trail.style.height = '64px'
+    }
 
-type Tab = 'analysis' | 'diff' | 'refined'
+    const onLeaveClickable = () => {
+      cursor.style.width = '20px'
+      cursor.style.height = '20px'
+      cursor.style.background = 'rgba(99,102,241,0.6)'
+      trail.style.width = '40px'
+      trail.style.height = '40px'
+    }
 
-const statusConfig = {
-  ready: { bg: 'bg-emerald-50 border-emerald-200', text: 'text-emerald-800', label: 'Ready to present' },
-  caution: { bg: 'bg-amber-50 border-amber-200', text: 'text-amber-800', label: 'Present with caution' },
-  not_ready: { bg: 'bg-red-50 border-red-200', text: 'text-red-800', label: 'Not ready' },
-}
+    const clickables = document.querySelectorAll('a, button, [role="button"]')
+    clickables.forEach(el => {
+      el.addEventListener('mouseenter', onEnterClickable)
+      el.addEventListener('mouseleave', onLeaveClickable)
+    })
 
-const assumedColorClass = {
-  ready: 'text-emerald-600',
-  caution: 'text-amber-600',
-  not_ready: 'text-red-600',
-}
+    window.addEventListener('mousemove', moveCursor)
 
-export default function Home() {
-  const [ticketKey, setTicketKey] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [result, setResult] = useState<AnalyzeResult | null>(null)
-  const [error, setError] = useState<string | null>(null)
-  const [recentTickets, setRecentTickets] = useState<RecentTicket[]>([])
-  const [activeTab, setActiveTab] = useState<Tab>('analysis')
-  const [loadingRecent, setLoadingRecent] = useState(false)
-  const [refineLoading, setRefineLoading] = useState(false)
-  const [refineError, setRefineError] = useState<string | null>(null)
-
-  const fetchRecentTickets = useCallback(async () => {
-    setLoadingRecent(true)
-    try {
-      const res = await fetch('/api/tickets')
-      if (res.ok) {
-        const data = await res.json()
-        setRecentTickets(data.tickets ?? [])
-      }
-    } catch {
-      // silently ignore — recent tickets are optional
-    } finally {
-      setLoadingRecent(false)
+    return () => {
+      window.removeEventListener('mousemove', moveCursor)
+      cursor.remove()
+      trail.remove()
     }
   }, [])
 
+  return null
+}
+
+export default function LandingPage() {
+  const router = useRouter()
+  const [scrolled, setScrolled] = useState(false)
+
   useEffect(() => {
-    fetchRecentTickets()
-  }, [fetchRecentTickets])
+    const scrollLight = document.createElement('div')
+    scrollLight.style.cssText = `
+      position: fixed;
+      left: 50%;
+      width: 800px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      transform: translateX(-50%);
+      transition: top 0.3s ease;
+      filter: blur(30px);
+    `
+    document.body.appendChild(scrollLight)
 
-  async function handleAnalyze(key?: string) {
-    const targetKey = key ?? ticketKey
-    if (!targetKey.trim()) return
-
-    setLoading(true)
-    setError(null)
-    setRefineError(null)
-    setResult(null)
-    setActiveTab('analysis')
-
-    try {
-      const res = await fetch('/api/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ticketKey: targetKey }),
-      })
-
-      const data = await res.json()
-
-      if (!res.ok) {
-        setError(data.error ?? 'Unknown error')
-      } else {
-        setResult(data as AnalyzeResult)
-        if (key) setTicketKey(key)
-      }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Network error')
-    } finally {
-      setLoading(false)
+    const updateLight = () => {
+      const scrollY = window.scrollY
+      const viewportHeight = window.innerHeight
+      scrollLight.style.top = (scrollY + viewportHeight * 0.3) + 'px'
+      setScrolled(scrollY > 20)
     }
-  }
 
-  async function handleRefine(key?: string) {
-    const targetKey = key ?? ticketKey
-    if (!targetKey.trim()) return
+    window.addEventListener('scroll', updateLight)
+    updateLight()
 
-    setRefineLoading(true)
-    setRefineError(null)
-    setError(null)
-    setResult(null)
-    setActiveTab('analysis')
-
-    try {
-      const res = await fetch('/api/agent/refine', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ticketKey: targetKey }),
-      })
-
-      const data = await res.json()
-
-      if (!res.ok) {
-        setRefineError(data.error ?? 'Unknown error')
-      } else {
-        setResult(data as AnalyzeResult)
-        if (key) setTicketKey(key)
-      }
-    } catch (err) {
-      setRefineError(err instanceof Error ? err.message : 'Network error')
-    } finally {
-      setRefineLoading(false)
+    return () => {
+      window.removeEventListener('scroll', updateLight)
+      scrollLight.remove()
     }
-  }
-
-  const priorityColor: Record<string, string> = {
-    Highest: 'text-red-600 bg-red-50',
-    High: 'text-orange-600 bg-orange-50',
-    Medium: 'text-yellow-600 bg-yellow-50',
-    Low: 'text-blue-600 bg-blue-50',
-    Lowest: 'text-slate-500 bg-slate-100',
-  }
-
-  const tabs: { id: Tab; label: string }[] = [
-    { id: 'analysis', label: 'Pressure Test' },
-    { id: 'diff', label: 'Diff View' },
-    { id: 'refined', label: 'Refined Ticket' },
-  ]
+  }, [])
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-              HH
-            </div>
-            <div>
-              <h1 className="text-base font-bold text-slate-900 leading-none">
-                Healthy Humans
-              </h1>
-              <p className="text-xs text-slate-500 mt-0.5">Jira Ticket Pressure Tester</p>
-            </div>
-          </div>
+    <div style={{ position: 'relative', background: '#080C14', color: '#F1F5F9', fontFamily: 'var(--font-geist-sans), system-ui, sans-serif', minHeight: '100vh', overflowX: 'hidden' }}>
+      <GlowCursor />
 
-          {/* Search bar */}
-          <div className="flex-1 max-w-lg ml-auto">
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={ticketKey}
-                onChange={e => setTicketKey(e.target.value.toUpperCase())}
-                onKeyDown={e => e.key === 'Enter' && handleAnalyze()}
-                placeholder="Enter ticket key, e.g. SCRUM-42"
-                className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-              />
-              <button
-                onClick={() => handleAnalyze()}
-                disabled={loading || !ticketKey.trim()}
-                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 text-white text-sm font-medium rounded-lg transition-colors"
-              >
-                {loading ? (
-                  <span className="flex items-center gap-2">
-                    <span className="inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Analyzing...
-                  </span>
-                ) : (
-                  'Analyze'
-                )}
-              </button>
-              <button
-                onClick={() => handleRefine()}
-                disabled={refineLoading || !ticketKey.trim()}
-                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white text-sm font-medium rounded-lg transition-colors"
-              >
-                {refineLoading ? (
-                  <span className="flex items-center gap-2">
-                    <span className="inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Refining...
-                  </span>
-                ) : (
-                  'Refine'
-                )}
-              </button>
-            </div>
-          </div>
-
-          <a
-            href={`https://healthyhumans.atlassian.net/jira/software/projects/SCRUM/boards`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs text-indigo-600 hover:underline hidden sm:block"
-          >
-            Open Jira
-          </a>
-        </div>
-      </header>
-
-      <div className="max-w-7xl mx-auto px-6 py-6 flex gap-6">
-        {/* Sidebar — recent tickets */}
-        <aside className="w-64 shrink-0 hidden lg:block">
-          <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-            <div className="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
-              <span className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
-                Recent Tickets
-              </span>
-              {loadingRecent && (
-                <span className="inline-block w-3 h-3 border-2 border-slate-400 border-t-transparent rounded-full animate-spin" />
-              )}
-            </div>
-            {recentTickets.length === 0 && !loadingRecent ? (
-              <p className="text-xs text-slate-400 px-4 py-3">
-                No tickets loaded — check your Jira credentials.
-              </p>
-            ) : (
-              <ul className="divide-y divide-slate-100">
-                {recentTickets.map(t => (
-                  <li key={t.key}>
-                    <button
-                      onClick={() => handleAnalyze(t.key)}
-                      className="w-full text-left px-4 py-3 hover:bg-slate-50 transition-colors"
-                    >
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-bold text-indigo-600">
-                          {t.key}
-                        </span>
-                        <span
-                          className={`text-xs px-1.5 py-0.5 rounded font-medium ${
-                            priorityColor[t.priority] ?? 'bg-slate-100 text-slate-500'
-                          }`}
-                        >
-                          {t.priority}
-                        </span>
-                      </div>
-                      <p className="text-xs text-slate-700 mt-0.5 line-clamp-2">
-                        {t.summary}
-                      </p>
-                      <span className="text-xs text-slate-400 mt-1 inline-block">
-                        {t.status}
-                      </span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </aside>
-
-        {/* Main content */}
-        <main className="flex-1 min-w-0">
-          {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 text-sm text-red-700">
-              <strong>Error:</strong> {error}
-            </div>
-          )}
-
-          {refineError && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 text-sm text-red-700">
-              <strong>Refine Error:</strong> {refineError}
-            </div>
-          )}
-
-          {refineLoading && (
-            <div className="bg-white rounded-xl border border-slate-200 p-6 mb-4 text-center">
-              <div className="inline-block w-6 h-6 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mb-3" />
-              <p className="text-slate-600 font-medium text-sm">Running multi-agent analysis...</p>
-              <p className="text-slate-400 text-xs mt-1">Structural check, Confluence verification & rewrite</p>
-            </div>
-          )}
-
-          {loading && (
-            <div className="bg-white rounded-xl border border-slate-200 p-12 text-center">
-              <div className="inline-block w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-4" />
-              <p className="text-slate-600 font-medium">Fetching ticket & Confluence pages...</p>
-              <p className="text-slate-400 text-sm mt-1">Running structural, verification & rewrite agents</p>
-            </div>
-          )}
-
-          {!result && !loading && !refineLoading && !error && !refineError && (
-            <div className="bg-white rounded-xl border border-slate-200 p-12 text-center">
-              <div className="text-4xl mb-4">🔍</div>
-              <h2 className="text-lg font-semibold text-slate-800 mb-2">
-                Enter a ticket key to get started
-              </h2>
-              <p className="text-slate-500 text-sm max-w-md mx-auto">
-                Healthy Humans fetches your Jira ticket, finds relevant Confluence pages, then runs
-                structural, verification, and rewrite agents to flag unverified claims and produce a refined ticket.
-              </p>
-            </div>
-          )}
-
-          {result && (
-            <div className="space-y-6">
-              {/* Ticket header */}
-              <div className="bg-white rounded-xl border border-slate-200 p-5">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <a
-                        href={`https://healthyhumans.atlassian.net/browse/${result.ticket.key}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm font-mono font-bold text-indigo-600 hover:underline"
-                      >
-                        {result.ticket.key}
-                      </a>
-                      <span className="text-xs text-slate-400">•</span>
-                      <span className="text-xs text-slate-500">{result.ticket.issueType}</span>
-                      <span className="text-xs text-slate-400">•</span>
-                      <span className="text-xs text-slate-500">{result.ticket.status}</span>
-                      {result.ticket.storyPoints !== null && (
-                        <>
-                          <span className="text-xs text-slate-400">•</span>
-                          <span className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-medium">
-                            {result.ticket.storyPoints} pts
-                          </span>
-                        </>
-                      )}
-                    </div>
-                    <h2 className="text-base font-semibold text-slate-900">
-                      {result.ticket.summary}
-                    </h2>
-                    {result.ticket.labels.length > 0 && (
-                      <div className="flex gap-1 mt-2 flex-wrap">
-                        {result.ticket.labels.map(l => (
-                          <span key={l} className="text-xs bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full">
-                            {l}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Readiness badge */}
-                  <div className={`px-4 py-3 rounded-lg border text-center ${statusConfig[result.analysis.status].bg}`}>
-                    <p className={`text-sm font-bold ${statusConfig[result.analysis.status].text}`}>
-                      {statusConfig[result.analysis.status].label}
-                    </p>
-                    <div className="flex gap-3 mt-1.5 justify-center text-xs font-semibold">
-                      <span className="text-emerald-600">Verified {result.analysis.verifiedCount}</span>
-                      <span className={assumedColorClass[result.analysis.status]}>
-                        Assumed {result.analysis.assumedCount}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {result.analysis.error && (
-                  <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
-                    <strong>Error:</strong> {result.analysis.error}
-                  </div>
-                )}
-
-                {result.analysis.confluencePageCount === 0 && (
-                  <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
-                    No Confluence pages found — all claims are unverified
-                  </div>
-                )}
-
-                {result.analysis.escalationMessage && (
-                  <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
-                    {result.analysis.escalationMessage}
-                  </div>
-                )}
-
-                {result.analysis.confluencePageTitles.length > 0 && (
-                  <p className="mt-3 text-xs text-slate-400">
-                    Context used: {result.analysis.confluencePageTitles.join(', ')}
-                  </p>
-                )}
-              </div>
-
-              {/* Confluence context */}
-              {result.confluencePages.length > 0 && (
-                <div className="bg-white rounded-xl border border-slate-200 p-5">
-                  <h3 className="text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
-                    <span>📄</span> Confluence Context ({result.confluencePages.length} pages)
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {result.confluencePages.map(page => (
-                      <a
-                        key={page.id}
-                        href={page.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block p-3 bg-slate-50 rounded-lg border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50 transition-colors"
-                      >
-                        <div className="flex items-start gap-2">
-                          <span className="text-slate-400 text-sm">📝</span>
-                          <div>
-                            <p className="text-sm font-medium text-slate-800 line-clamp-1">
-                              {page.title}
-                            </p>
-                            <p className="text-xs text-slate-500 mt-0.5">{page.space}</p>
-                            {page.excerpt && (
-                              <p className="text-xs text-slate-600 mt-1 line-clamp-2">
-                                {page.excerpt}
-                              </p>
-                            )}
-                          </div>
-                        </div>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Tabs */}
-              <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-                <div className="flex border-b border-slate-200">
-                  {tabs.map(tab => (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveTab(tab.id)}
-                      className={`px-5 py-3 text-sm font-medium transition-colors ${
-                        activeTab === tab.id
-                          ? 'border-b-2 border-indigo-600 text-indigo-600 bg-indigo-50/50'
-                          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                      }`}
-                    >
-                      {tab.label}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="p-5">
-                  {/* Analysis tab */}
-                  {activeTab === 'analysis' && (
-                    <div className="space-y-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* Verified */}
-                        <div className="rounded-lg border-l-4 border-emerald-400 bg-emerald-50/40 p-4">
-                          <h3 className="font-semibold text-sm text-emerald-800 mb-3">
-                            Verified ({result.analysis.verifiedCount})
-                          </h3>
-                          {result.analysis.verified.length === 0 ? (
-                            <p className="text-sm text-slate-500">
-                              Nothing could be verified against Confluence
-                            </p>
-                          ) : (
-                            <div className="space-y-3">
-                              {result.analysis.verified.map((v, i) => (
-                                <div key={i} className="text-sm">
-                                  <p className="font-bold text-slate-900">{v.claim}</p>
-                                  <p className="text-xs text-slate-500 mt-0.5">{v.source}</p>
-                                  <p className="text-xs italic text-slate-600 mt-1">&ldquo;{v.quote}&rdquo;</p>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Assumed */}
-                        <div className="rounded-lg border-l-4 border-amber-400 bg-amber-50/40 p-4">
-                          <h3 className="font-semibold text-sm text-amber-800 mb-3">
-                            Assumed ({result.analysis.assumedCount}) — review before presenting
-                          </h3>
-                          {result.analysis.assumed.length === 0 ? (
-                            <p className="text-sm text-slate-500">
-                              No assumptions — all claims verified
-                            </p>
-                          ) : (
-                            <div className="space-y-3">
-                              {result.analysis.assumed.map((a, i) => (
-                                <div key={i} className="text-sm">
-                                  <p className="font-bold text-slate-900">{a.claim}</p>
-                                  <p className="text-xs text-slate-500 mt-0.5">{a.reason}</p>
-                                  <p className="text-xs text-amber-700 mt-1">→ {a.pmAction}</p>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Structural issues */}
-                      <div className="rounded-lg border-l-4 border-red-400 bg-red-50/40 p-4">
-                        <h3 className="font-semibold text-sm text-red-800 mb-3">
-                          Structural issues ({result.analysis.structuralIssues.length})
-                        </h3>
-                        {result.analysis.structuralIssues.length === 0 ? (
-                          <p className="text-sm text-slate-500">No structural issues found</p>
-                        ) : (
-                          <ul className="space-y-2">
-                            {result.analysis.structuralIssues.map((issue, i) => (
-                              <li key={i} className="text-sm text-slate-700 flex gap-2">
-                                <span className="text-red-400 shrink-0">•</span>
-                                <span>{issue}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Diff tab */}
-                  {activeTab === 'diff' && (
-                    <div className="space-y-6">
-                      <DiffView
-                        label="Summary"
-                        original={result.analysis.diff.summary.original}
-                        revised={result.analysis.diff.summary.revised}
-                      />
-                      <DiffView
-                        label="Description"
-                        original={result.analysis.diff.description.original}
-                        revised={result.analysis.diff.description.revised}
-                      />
-                      <DiffView
-                        label="Acceptance Criteria"
-                        original={result.analysis.diff.acceptanceCriteria.original}
-                        revised={result.analysis.diff.acceptanceCriteria.revised}
-                      />
-                    </div>
-                  )}
-
-                  {/* Refined ticket tab */}
-                  {activeTab === 'refined' && (
-                    <div className="space-y-5">
-                      <div>
-                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
-                          Summary
-                        </label>
-                        <p className="mt-1 text-sm font-medium text-slate-900 bg-slate-50 rounded-lg p-3 border border-slate-200">
-                          {result.analysis.refinedTicket.summary}
-                        </p>
-                      </div>
-
-                      <div>
-                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
-                          Description
-                        </label>
-                        <pre className="mt-1 text-sm text-slate-800 bg-slate-50 rounded-lg p-3 border border-slate-200 whitespace-pre-wrap font-sans">
-                          {result.analysis.refinedTicket.description}
-                        </pre>
-                      </div>
-
-                      <div>
-                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
-                          Acceptance Criteria
-                        </label>
-                        <ul className="mt-1 space-y-2">
-                          {result.analysis.refinedTicket.acceptanceCriteria.map((ac, i) => (
-                            <li
-                              key={i}
-                              className="text-sm text-slate-800 bg-emerald-50 border border-emerald-200 rounded-lg p-3 flex gap-2"
-                            >
-                              <span className="text-emerald-500 font-bold shrink-0">✓</span>
-                              {ac}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {result.analysis.refinedTicket.outOfScope.length > 0 && (
-                        <div>
-                          <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
-                            Out of Scope
-                          </label>
-                          <ul className="mt-1 space-y-1">
-                            {result.analysis.refinedTicket.outOfScope.map((item, i) => (
-                              <li key={i} className="text-sm text-slate-700 flex gap-2">
-                                <span className="text-slate-400">—</span> {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {result.analysis.refinedTicket.assumptions.length > 0 && (
-                        <div>
-                          <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
-                            Assumptions
-                          </label>
-                          <ul className="mt-1 space-y-1">
-                            {result.analysis.refinedTicket.assumptions.map((item, i) => (
-                              <li key={i} className="text-sm text-slate-700 flex gap-2">
-                                <span className="text-slate-400">~</span> {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      <div className="pt-2 border-t border-slate-100">
-                        <button
-                          onClick={() => {
-                            const t = result.analysis.refinedTicket
-                            const text = [
-                              `**Summary:** ${t.summary}`,
-                              '',
-                              `**Description:**\n${t.description}`,
-                              '',
-                              `**Acceptance Criteria:**\n${t.acceptanceCriteria.map(ac => `- ${ac}`).join('\n')}`,
-                              t.outOfScope.length ? `\n**Out of Scope:**\n${t.outOfScope.map(i => `- ${i}`).join('\n')}` : '',
-                              t.assumptions.length ? `\n**Assumptions:**\n${t.assumptions.map(i => `- ${i}`).join('\n')}` : '',
-                            ].filter(Boolean).join('\n')
-                            navigator.clipboard.writeText(text)
-                          }}
-                          className="text-sm text-indigo-600 hover:underline font-medium"
-                        >
-                          Copy to clipboard
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-        </main>
+      {/* Ambient glow orbs */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: '-20%', left: '-10%', width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)', filter: 'blur(40px)' }} />
+        <div style={{ position: 'absolute', top: '5%', right: '-15%', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.10) 0%, transparent 70%)', filter: 'blur(40px)' }} />
+        <div style={{ position: 'absolute', bottom: '20%', left: '25%', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 70%)', filter: 'blur(60px)' }} />
       </div>
+
+      {/* Nav */}
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        padding: '0 48px', height: 64,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        background: scrolled ? 'rgba(8,12,20,0.95)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
+        borderBottom: scrolled ? '1px solid #1E293B' : 'none',
+        transition: 'all 0.2s ease',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{
+            width: 32, height: 32, borderRadius: 9, background: '#6366F1', flexShrink: 0,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontWeight: 800, fontSize: 16, color: '#fff', letterSpacing: '-0.03em',
+          }}>P</div>
+          <span style={{ fontWeight: 700, fontSize: 16, letterSpacing: '-0.02em', color: '#F1F5F9' }}>ProductProof</span>
+        </div>
+        <button
+          onClick={() => router.push('/demo')}
+          style={{
+            padding: '9px 20px', background: '#6366F1', color: '#fff',
+            border: 'none', borderRadius: 9, fontSize: 13, fontWeight: 600,
+            cursor: 'pointer', letterSpacing: '-0.01em', fontFamily: 'inherit',
+          }}
+        >Try the demo →</button>
+      </nav>
+
+      {/* Hero */}
+      <section style={{
+        position: 'relative', zIndex: 1,
+        minHeight: '100vh', display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center',
+        textAlign: 'center', padding: '120px 24px 80px',
+      }}>
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: 8,
+          padding: '5px 14px', borderRadius: 999,
+          border: '1px solid #1E293B', background: 'rgba(99,102,241,0.08)',
+          fontSize: 12, color: '#818CF8', fontWeight: 600,
+          marginBottom: 32, letterSpacing: '0.06em',
+        }}>
+          <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366F1', display: 'inline-block', flexShrink: 0 }} />
+          AI-POWERED PM CO-PILOT
+        </div>
+
+        <h1 style={{
+          fontSize: 'clamp(36px, 6.5vw, 76px)',
+          fontWeight: 800, lineHeight: 1.06,
+          letterSpacing: '-0.04em',
+          margin: '0 0 24px', maxWidth: 820,
+          color: '#F1F5F9',
+          background: 'linear-gradient(135deg, #F1F5F9 30%, #818CF8 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+        }}>
+          Prove every ticket<br />before you build it
+        </h1>
+
+        <p style={{
+          fontSize: 18, color: '#94A3B8', lineHeight: 1.75,
+          maxWidth: 540, margin: '0 0 40px',
+        }}>
+          Three AI agents verify every claim in your Jira tickets against your
+          documentation — telling you exactly what is confirmed and what is
+          assumed before sprint planning.
+        </p>
+
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 48 }}>
+          <button
+            onClick={() => router.push('/demo')}
+            style={{
+              padding: '13px 28px', background: '#6366F1', color: '#fff',
+              border: 'none', borderRadius: 10, fontSize: 15, fontWeight: 600,
+              cursor: 'pointer', letterSpacing: '-0.01em', fontFamily: 'inherit',
+              boxShadow: '0 0 40px rgba(99,102,241,0.35)',
+            }}
+          >Try the demo →</button>
+          <a
+            href="https://github.com/alisaeed786-hub/healthy-humans"
+            target="_blank" rel="noopener noreferrer"
+            style={{
+              padding: '13px 28px', background: 'transparent', color: '#F1F5F9',
+              border: '1px solid #1E293B', borderRadius: 10, fontSize: 15,
+              fontWeight: 600, textDecoration: 'none', display: 'inline-flex',
+              alignItems: 'center', letterSpacing: '-0.01em',
+            }}
+          >View on GitHub</a>
+        </div>
+
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
+          {['Next.js 14', 'TypeScript', 'Anthropic Claude', 'Jira REST API', 'Confluence RAG', 'Vercel'].map(t => <Pill key={t}>{t}</Pill>)}
+        </div>
+      </section>
+
+      {/* Problem */}
+      <section style={{ position: 'relative', zIndex: 1, padding: '96px 24px', maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <p style={{ fontSize: 12, color: '#6366F1', fontWeight: 700, letterSpacing: '0.1em', marginBottom: 14, textTransform: 'uppercase' }}>The Problem</p>
+          <h2 style={{ fontSize: 'clamp(26px, 4vw, 42px)', fontWeight: 800, letterSpacing: '-0.03em', color: '#F1F5F9', margin: 0 }}>
+            The 1-hour sprint planning crunch
+          </h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+          {[
+            { icon: '💬', title: 'Requirements lost between Slack and Jira', body: 'Decisions made in standup never make it into the ticket. Engineers push back. The PM has to go find the thread.' },
+            { icon: '🎲', title: 'Assumptions treated as facts', body: 'The API supports this ends up in the ticket as a requirement. Nobody checks. Engineering discovers it does not two sprints later.' },
+            { icon: '⚠️', title: 'Compliance gaps reach engineering', body: 'A ticket misses a data handling rule. It ships. The review catches it after the sprint is already done.' },
+          ].map(item => (
+            <div key={item.title} style={{
+              background: '#111827', border: '1px solid #1E293B',
+              borderRadius: 14, padding: '28px 24px',
+              display: 'flex', flexDirection: 'column', gap: 12,
+            }}>
+              <div style={{ fontSize: 28, lineHeight: 1 }}>{item.icon}</div>
+              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: '-0.02em', color: '#F1F5F9', lineHeight: 1.35 }}>{item.title}</div>
+              <div style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.7, flex: 1 }}>{item.body}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section style={{ position: 'relative', zIndex: 1, padding: '96px 24px', maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <p style={{ fontSize: 12, color: '#6366F1', fontWeight: 700, letterSpacing: '0.1em', marginBottom: 14, textTransform: 'uppercase' }}>How it works</p>
+          <h2 style={{ fontSize: 'clamp(26px, 4vw, 42px)', fontWeight: 800, letterSpacing: '-0.03em', color: '#F1F5F9', margin: 0 }}>
+            Three agents. One verdict.
+          </h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+          {[
+            { n: '01', name: 'Structural Analyst', color: '#818CF8', border: '#3730A3', desc: 'Checks ticket format, acceptance criteria, scope definition, and technical prescription. Catches structural problems before documentation review.' },
+            { n: '02', name: 'Contextual Verifier', color: '#34D399', border: '#064E3B', desc: 'Cross-references every claim against your corpus. Only marks a claim Verified if it can quote the exact source sentence. Everything else is Assumed.' },
+            { n: '03', name: 'Story Writer', color: '#FCD34D', border: '#92400E', desc: 'Rewrites the ticket using only verified facts. Never invents requirements. Flags every assumption so the PM knows what to confirm before sprint.' },
+          ].map(agent => (
+            <div key={agent.n} style={{
+              background: '#111827', border: `1px solid ${agent.border}`,
+              borderRadius: 14, padding: '28px 24px',
+              display: 'flex', flexDirection: 'column', gap: 12,
+            }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: agent.color }}>{agent.n}</div>
+              <div style={{ fontSize: 17, fontWeight: 700, letterSpacing: '-0.02em', color: '#F1F5F9' }}>{agent.name}</div>
+              <div style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.7 }}>{agent.desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* The Output */}
+      <section style={{ position: 'relative', zIndex: 1, padding: '96px 24px', maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <p style={{ fontSize: 12, color: '#6366F1', fontWeight: 700, letterSpacing: '0.1em', marginBottom: 14, textTransform: 'uppercase' }}>The Output</p>
+          <h2 style={{ fontSize: 'clamp(26px, 4vw, 42px)', fontWeight: 800, letterSpacing: '-0.03em', color: '#F1F5F9', margin: '0 0 12px' }}>
+            Know what you know.<br />Know what you do not.
+          </h2>
+          <p style={{ fontSize: 15, color: '#94A3B8', maxWidth: 480, margin: '0 auto' }}>
+            Every ticket gets a verdict — not a score. The PM knows exactly what to defend and what to go confirm.
+          </p>
+        </div>
+
+        <div style={{
+          background: '#111827', border: '1px solid #1E293B',
+          borderRadius: 16, padding: '28px 28px 24px',
+          maxWidth: 680, margin: '0 auto',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, gap: 12, flexWrap: 'wrap' }}>
+            <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, fontWeight: 600, color: '#64748B', letterSpacing: '0.04em' }}>SCRUM-33</span>
+            <span style={{ padding: '4px 12px', borderRadius: 999, background: '#1C0A0F', color: '#E11D48', fontSize: 12, fontWeight: 700, letterSpacing: '0.05em', border: '1px solid #7F1D1D' }}>NOT READY</span>
+          </div>
+
+          <p style={{ fontSize: 14, color: '#94A3B8', marginBottom: 20, lineHeight: 1.6, borderBottom: '1px solid #1E293B', paddingBottom: 20 }}>
+            As a parent, I want to see my child&apos;s full record so I can monitor their health.
+          </p>
+
+          <div style={{ marginBottom: 4 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#059669', letterSpacing: '0.08em', marginBottom: 10, textTransform: 'uppercase' }}>Verified (2)</div>
+            <VerifiedRow text="Proxy access must be scoped to minimum necessary data — confirmed in compliance documentation." />
+            <VerifiedRow text="Role changes must be logged in the audit trail — confirmed in system architecture docs." />
+          </div>
+
+          <div style={{ marginTop: 16 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#D97706', letterSpacing: '0.08em', marginBottom: 10, textTransform: 'uppercase' }}>Assumed (5) — review before presenting</div>
+            <AssumedRow
+              text="Full record access is permitted for proxy users"
+              action="No documentation confirms this. Contradicts documented access restrictions. PM must define scope."
+            />
+            <AssumedRow
+              text="Sensitive records are visible to parent proxies"
+              action="Contradicts documented access restrictions. PM must resolve before sprint."
+            />
+          </div>
+
+          <div style={{ marginTop: 16, padding: '12px 16px', background: 'rgba(99,102,241,0.08)', borderRadius: 10, border: '1px solid #1E293B' }}>
+            <span style={{ fontSize: 13, color: '#818CF8', lineHeight: 1.5 }}>
+              5 assumptions in this ticket. Resolve them before presenting to engineering.
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Industry Spaces */}
+      <section style={{ position: 'relative', zIndex: 1, padding: '96px 24px', textAlign: 'center' }}>
+        <p style={{ fontSize: 12, color: '#6366F1', fontWeight: 700, letterSpacing: '0.1em', marginBottom: 14, textTransform: 'uppercase' }}>Industry Spaces</p>
+        <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, letterSpacing: '-0.03em', color: '#F1F5F9', marginBottom: 12 }}>
+          Works for any industry.<br />Speaks your language.
+        </h2>
+        <p style={{ fontSize: 15, color: '#94A3B8', marginBottom: 36, maxWidth: 460, margin: '0 auto 36px' }}>
+          Each space ships with a pre-built corpus of domain knowledge and compliance guardrails baked in.
+        </p>
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
+          {[
+            { label: 'Healthcare', color: '#0891B2' },
+            { label: 'Fintech', color: '#7C3AED' },
+            { label: 'SaaS', color: '#0284C7' },
+            { label: 'Enterprise', color: '#64748B' },
+            { label: 'E-commerce', color: '#EA580C' },
+          ].map(s => (
+            <span key={s.label} style={{
+              padding: '9px 22px', borderRadius: 999,
+              border: `1px solid ${s.color}50`,
+              background: `${s.color}15`,
+              color: '#F1F5F9', fontSize: 14, fontWeight: 500,
+            }}>{s.label}</span>
+          ))}
+        </div>
+      </section>
+
+      {/* Built by */}
+      <section style={{ position: 'relative', zIndex: 1, padding: '96px 24px', maxWidth: 680, margin: '0 auto' }}>
+        <div style={{ background: '#111827', border: '1px solid #1E293B', borderRadius: 16, padding: '40px 36px', textAlign: 'center' }}>
+          <div style={{
+            width: 56, height: 56, borderRadius: 14, background: '#3730A3',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            margin: '0 auto 20px', fontSize: 22, fontWeight: 800, color: '#fff',
+            flexShrink: 0,
+          }}>A</div>
+          <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em', color: '#F1F5F9', marginBottom: 10 }}>Built by Ali Saeed</div>
+          <div style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.75, marginBottom: 24, maxWidth: 480, margin: '0 auto 24px' }}>
+            Product Manager. A portfolio project demonstrating AI agent architecture,
+            product thinking, and full-stack development — built to solve a real
+            problem PMs face every sprint.
+          </div>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 28 }}>
+            {['Next.js 14', 'TypeScript', 'Anthropic Claude', 'Jira REST API', 'Confluence RAG', 'Vercel'].map(t => <Pill key={t}>{t}</Pill>)}
+          </div>
+          <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
+            <a
+              href="https://www.linkedin.com/in/alisaeed786"
+              target="_blank" rel="noopener noreferrer"
+              style={{ padding: '10px 24px', background: '#6366F1', color: '#fff', border: 'none', borderRadius: 9, fontSize: 13, fontWeight: 600, cursor: 'pointer', textDecoration: 'none' }}
+            >LinkedIn</a>
+            <a
+              href="https://github.com/alisaeed786-hub/healthy-humans"
+              target="_blank" rel="noopener noreferrer"
+              style={{ padding: '10px 24px', background: 'transparent', color: '#F1F5F9', border: '1px solid #1E293B', borderRadius: 9, fontSize: 13, fontWeight: 600, cursor: 'pointer', textDecoration: 'none' }}
+            >GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section style={{ position: 'relative', zIndex: 1, padding: '96px 24px', textAlign: 'center' }}>
+        <h2 style={{ fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 800, letterSpacing: '-0.03em', color: '#F1F5F9', marginBottom: 16 }}>
+          Ready to see it work?
+        </h2>
+        <p style={{ fontSize: 16, color: '#94A3B8', marginBottom: 36 }}>
+          No account needed. Pick a ticket and watch the agents run.
+        </p>
+        <button
+          onClick={() => router.push('/demo')}
+          style={{
+            padding: '15px 40px', background: '#6366F1', color: '#fff',
+            border: 'none', borderRadius: 12, fontSize: 16, fontWeight: 700,
+            cursor: 'pointer', letterSpacing: '-0.01em', fontFamily: 'inherit',
+            boxShadow: '0 0 60px rgba(99,102,241,0.4)',
+          }}
+        >Try the demo →</button>
+      </section>
+
+      {/* Footer */}
+      <footer style={{
+        position: 'relative', zIndex: 1,
+        padding: '28px 48px',
+        borderTop: '1px solid #1E293B',
+        display: 'flex', alignItems: 'center',
+        justifyContent: 'space-between', flexWrap: 'wrap', gap: 12,
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ width: 26, height: 26, borderRadius: 7, background: '#6366F1', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 13, color: '#fff', flexShrink: 0 }}>P</div>
+          <span style={{ fontSize: 14, fontWeight: 600, color: '#F1F5F9' }}>ProductProof</span>
+          <span style={{ fontSize: 13, color: '#475569' }}>— Prove it before you build it</span>
+        </div>
+        <span style={{ fontSize: 13, color: '#475569' }}>© 2026 Ali Saeed</span>
+      </footer>
+
+      <style>{`
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        @media (max-width: 640px) {
+          nav { padding: 0 20px !important; }
+          footer { padding: 24px 20px !important; flex-direction: column; align-items: flex-start !important; }
+        }
+      `}</style>
     </div>
   )
 }

@@ -23,6 +23,7 @@ export interface RefinedTicket {
 }
 
 export interface AgentResult {
+  mode: 'quick' | 'full'
   status: 'ready' | 'caution' | 'not_ready'
   verifiedCount: number
   assumedCount: number
@@ -197,15 +198,69 @@ Return ONLY this JSON object. No markdown fencing. No explanation:
 export async function runStoryWriter(
   ticket: JiraTicket,
   structuralIssues: string[],
-  verified: VerifiedItem[]
+  verified: VerifiedItem[],
+  mode: 'quick' | 'full' = 'full'
 ): Promise<{ refinedTicket: RefinedTicket, diff: AgentResult['diff'] }> {
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
-  const verifiedFacts = verified.length > 0
-    ? verified.map(v => `- ${v.claim} (confirmed: "${v.quote}")`).join('\n')
-    : 'No verified facts available. Fix structural issues only. Do not add any new content.'
+  const safeFallback = {
+    refinedTicket: {
+      summary: ticket.summary,
+      description: ticket.description,
+      acceptanceCriteria: [],
+      outOfScope: [],
+      assumptions: ['Story writer failed — original ticket returned unchanged']
+    },
+    diff: {
+      summary: { original: ticket.summary, revised: ticket.summary },
+      description: { original: ticket.description, revised: ticket.description },
+      acceptanceCriteria: { original: ticket.acceptanceCriteria || '', revised: '' }
+    }
+  }
 
-  const prompt = `You are a senior product manager rewriting a Jira ticket.
+  let prompt: string
+  let max_tokens: number
+
+  if (mode === 'quick') {
+    prompt = `You are a senior product manager rewriting a Jira ticket.
+Focus only on the user story and acceptance criteria.
+
+ORIGINAL TICKET:
+Summary: ${ticket.summary}
+Description: ${ticket.description}
+
+STRUCTURAL ISSUES TO FIX:
+${structuralIssues.slice(0, 5).join('\n') || 'None'}
+
+RULES:
+1. Rewrite the summary as a clear user story: As a [persona] I want [action] so that [outcome]
+2. Write 3-5 testable acceptance criteria in Given/When/Then format
+3. Never tell engineers HOW to build — only WHAT to build
+4. Never exceed 5 acceptance criteria in quick mode
+5. Preserve the PM's original intent
+
+Return ONLY this JSON with no markdown fencing:
+{
+  "refinedTicket": {
+    "summary": "",
+    "description": "",
+    "acceptanceCriteria": [],
+    "outOfScope": [],
+    "assumptions": []
+  },
+  "diff": {
+    "summary": { "original": "", "revised": "" },
+    "description": { "original": "", "revised": "" },
+    "acceptanceCriteria": { "original": "", "revised": "" }
+  }
+}`
+    max_tokens = 1000
+  } else {
+    const verifiedFacts = verified.length > 0
+      ? verified.map(v => `- ${v.claim} (confirmed: "${v.quote}")`).join('\n')
+      : 'No verified facts available. Fix structural issues only. Do not add any new content.'
+
+    prompt = `You are a senior product manager rewriting a Jira ticket.
 
 ORIGINAL TICKET:
 Summary: ${ticket.summary}
@@ -244,25 +299,12 @@ Return ONLY this JSON object. No markdown fencing. No explanation:
     "acceptanceCriteria": { "original": "", "revised": "" }
   }
 }`
-
-  const safeFallback = {
-    refinedTicket: {
-      summary: ticket.summary,
-      description: ticket.description,
-      acceptanceCriteria: [],
-      outOfScope: [],
-      assumptions: ['Story writer failed — original ticket returned unchanged']
-    },
-    diff: {
-      summary: { original: ticket.summary, revised: ticket.summary },
-      description: { original: ticket.description, revised: ticket.description },
-      acceptanceCriteria: { original: ticket.acceptanceCriteria || '', revised: '' }
-    }
+    max_tokens = 4000
   }
 
   const message = await client.messages.create({
     model: 'claude-sonnet-4-6',
-    max_tokens: 4000,
+    max_tokens,
     messages: [{ role: 'user', content: prompt }]
   })
 
@@ -274,23 +316,23 @@ Return ONLY this JSON object. No markdown fencing. No explanation:
   return result
 }
 
-export async function runFullAnalysis(
+export async function runFullAnalysisWithPrecomputedStructure(
   ticket: JiraTicket,
   confluenceContext: string,
-  confluencePages: ConfluencePage[]
+  confluencePages: ConfluencePage[],
+  structuralIssues: string[],
+  mode: 'quick' | 'full' = 'full'
 ): Promise<AgentResult> {
   try {
-    const [structuralIssues, contextResult] = await Promise.allSettled([
-      runStructuralAnalyst(ticket),
+    const contextResult = await Promise.allSettled([
       runContextualVerifier(ticket, confluenceContext, confluencePages)
     ])
 
-    const issues = structuralIssues.status === 'fulfilled' ? structuralIssues.value : ['Structural analysis failed']
-    const context = contextResult.status === 'fulfilled'
-      ? contextResult.value
+    const context = contextResult[0].status === 'fulfilled'
+      ? contextResult[0].value
       : { verified: [], assumed: [{ claim: 'Contextual verification failed', reason: 'Agent error', pmAction: 'Review manually' }], confluenceLinks: [], confluencePageTitles: [] }
 
-    const writerResult = await runStoryWriter(ticket, issues, context.verified)
+    const writerResult = await runStoryWriter(ticket, structuralIssues, context.verified, mode)
 
     const assumedCount = context.assumed.length
     const status = assumedCount <= 1 ? 'ready' : assumedCount <= 3 ? 'caution' : 'not_ready'
@@ -299,12 +341,13 @@ export async function runFullAnalysis(
       : undefined
 
     return {
+      mode,
       status,
       verifiedCount: context.verified.length,
       assumedCount,
       verified: context.verified,
       assumed: context.assumed,
-      structuralIssues: issues,
+      structuralIssues,
       refinedTicket: writerResult.refinedTicket,
       diff: writerResult.diff,
       confluenceLinks: context.confluenceLinks,
@@ -315,12 +358,13 @@ export async function runFullAnalysis(
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
     return {
+      mode: 'full',
       status: 'not_ready',
       verifiedCount: 0,
       assumedCount: 0,
       verified: [],
       assumed: [],
-      structuralIssues: ['Analysis failed: ' + message],
+      structuralIssues,
       refinedTicket: {
         summary: ticket.summary,
         description: ticket.description,
@@ -339,4 +383,13 @@ export async function runFullAnalysis(
       error: message
     }
   }
+}
+
+export async function runFullAnalysis(
+  ticket: JiraTicket,
+  confluenceContext: string,
+  confluencePages: ConfluencePage[]
+): Promise<AgentResult> {
+  const structuralIssues = await runStructuralAnalyst(ticket)
+  return runFullAnalysisWithPrecomputedStructure(ticket, confluenceContext, confluencePages, structuralIssues, 'full')
 }

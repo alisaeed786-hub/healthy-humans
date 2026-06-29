@@ -24,6 +24,16 @@ export interface JiraTicket {
   storyPoints: number | null
   components: string[]
   rawFields: Record<string, unknown>
+  sprint?: string | null
+  hhStatus?: string | null
+  hhAssumedCount?: number | null
+  hhVerifiedCount?: number | null
+  hhKeywords?: string | null
+  hhConfluencePages?: string | null
+  hhAcceptanceCriteria?: string | null
+  hhOutOfScope?: string | null
+  hhAssumptions?: string | null
+  hhPmNotes?: string | null
 }
 
 function extractText(adf: unknown): string {
@@ -86,7 +96,22 @@ export async function fetchJiraTicket(ticketKey: string): Promise<JiraTicket> {
   }
 }
 
-const TICKET_FIELDS = ['summary', 'status', 'issuetype', 'priority']
+const TICKET_FIELDS = [
+  'summary',
+  'status',
+  'issuetype',
+  'priority',
+  'customfield_10020',
+  'customfield_10080',
+  'customfield_10075',
+  'customfield_10076',
+  'customfield_10077',
+  'customfield_10079',
+  'customfield_10117',
+  'customfield_10118',
+  'customfield_10119',
+  'customfield_10120',
+]
 
 function mapIssues(issues: Record<string, unknown>[]) {
   return issues.map(issue => {
@@ -100,6 +125,22 @@ function mapIssues(issues: Record<string, unknown>[]) {
       status: status?.name as string,
       type: issuetype?.name as string,
       priority: priority?.name as string,
+      sprint: (() => {
+        const sprintField = f.customfield_10020
+        if (!sprintField || !Array.isArray(sprintField) || sprintField.length === 0) return null
+        const active = sprintField.find((s: Record<string, unknown>) => s.state === 'active')
+        const latest = active || sprintField[sprintField.length - 1]
+        return (latest?.name as string) || null
+      })(),
+      hhStatus: (f.customfield_10080 as string) || null,
+      hhAssumedCount: (f.customfield_10075 as number) || null,
+      hhVerifiedCount: (f.customfield_10076 as number) || null,
+      hhKeywords: (f.customfield_10077 as string) || null,
+      hhConfluencePages: (f.customfield_10079 as string) || null,
+      hhAcceptanceCriteria: (f.customfield_10117 as string) || null,
+      hhOutOfScope: (f.customfield_10118 as string) || null,
+      hhAssumptions: (f.customfield_10119 as string) || null,
+      hhPmNotes: (f.customfield_10120 as string) || null,
     }
   })
 }

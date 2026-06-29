@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { fetchJiraTicket, updateAnalysisFields } from '@/lib/jira'
 import { searchConfluence, buildConfluenceContext } from '@/lib/confluence'
-import { runFullAnalysis, extractSearchKeywords } from '@/lib/agents'
+import { runFullAnalysisWithPrecomputedStructure, runStructuralAnalyst, extractSearchKeywords } from '@/lib/agents'
 
 export const dynamic = 'force-dynamic'
+
 export const revalidate = 0
 
 export async function POST(req: NextRequest) {
@@ -15,21 +16,26 @@ export async function POST(req: NextRequest) {
     }
 
     const ticket = await fetchJiraTicket(ticketKey.trim().toUpperCase())
+    console.log('[timing] ticket fetched', Date.now())
 
-    const [searchQuery] = await Promise.allSettled([
-      extractSearchKeywords(ticket)
+    const agent1Promise = runStructuralAnalyst(ticket)
+    const query = await extractSearchKeywords(ticket)
+    console.log('[timing] agent0 done', Date.now())
+
+    const [confluencePages, structuralIssues] = await Promise.all([
+      searchConfluence(query, 3),
+      agent1Promise
     ])
+    console.log('[timing] promise.all done', Date.now())
 
-    const query = searchQuery.status === 'fulfilled'
-      ? searchQuery.value
-      : ticket.summary.slice(0, 100)
-
-    const confluencePages = await searchConfluence(query, 3)
     const confluenceContext = buildConfluenceContext(confluencePages)
 
     console.log('[confluence] query:', query, '| pages found:', confluencePages.length, '| titles:', confluencePages.map(p => p.title).join(', '))
 
-    const analysis = await runFullAnalysis(ticket, confluenceContext, confluencePages)
+    const analysis = await runFullAnalysisWithPrecomputedStructure(
+      ticket, confluenceContext, confluencePages, structuralIssues, 'quick'
+    )
+    console.log('[timing] full analysis done', Date.now())
 
     updateAnalysisFields(ticket.key, analysis, query)
 
