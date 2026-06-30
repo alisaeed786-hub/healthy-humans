@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useRouter, redirect } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
 function Pill({ children }: { children: React.ReactNode }) {
@@ -126,6 +126,10 @@ function GlowCursor() {
 }
 
 export default function LandingPage() {
+  if (process.env.NEXT_PUBLIC_DEMO_MODE === 'true') {
+    redirect('/demo')
+  }
+
   const router = useRouter()
   const [scrolled, setScrolled] = useState(false)
 

@@ -335,8 +335,8 @@ export async function runFullAnalysisWithPrecomputedStructure(
     const writerResult = await runStoryWriter(ticket, structuralIssues, context.verified, mode)
 
     const assumedCount = context.assumed.length
-    const status = assumedCount <= 1 ? 'ready' : assumedCount <= 3 ? 'caution' : 'not_ready'
-    const escalationMessage = assumedCount >= 4
+    const status = assumedCount <= 3 ? 'ready' : assumedCount <= 6 ? 'caution' : 'not_ready'
+    const escalationMessage = assumedCount >= 7
       ? `This ticket has ${assumedCount} assumptions. Resolve the items in the assumed list before presenting to the team.`
       : undefined
 

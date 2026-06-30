@@ -1,0 +1,366 @@
+{
+  "ticket": {
+    "key": "SCRUM-30",
+    "summary": "As a patient, I want to view my personal health information in my profile so that I can stay informed about my current health status",
+    "description": "A logged-in patient should be able to navigate to their health profile and view their personal health information. The data displayed must reflect the most recently available records from the source system. The view must be accessible on both desktop and mobile web browsers.\n\nAcceptance Criteria:\n- Given I am a logged-in patient, when I navigate to my health profile, then I can see my health information including at minimum: diagnoses, medications, and last recorded vitals\n- Given I am viewing my health profile, when the page loads, then the data displayed matches the most recent records available in the source system at the time of the request\n- Given I am a logged-in patient, when I access my health profile on a mobile or desktop browser, then all health information is readable and accessible without horizontal scrolling or truncated content\n- Given I am not logged in, when I attempt to access a health profile URL directly, then I am redirected to the login page and no health information is displayed\n- Given I am a logged-in patient, when my health profile loads successfully, then the date and time the data was last refreshed is displayed on the screen\n\nOut of Scope:\n- Editing or updating health information directly from this view\n- Native mobile app implementation — web browser only for this ticket\n- Real-time or push-based data synchronisation with the source system\n- Health information for dependants or other linked accounts\n- Downloading or exporting health records\n\nAssumptions:\n- A patient authentication and session management system already exists\n- A source system or API that provides patient health data is available and documented\n- The minimum required health data fields are: diagnoses, medications, and last recorded vitals — these should be confirmed with clinical or product stakeholders before development begins\n- 'Most recently available records' means the latest data the source system holds at the time the page is requested, not a live feed\n- Accessibility compliance standard (e.g. WCAG 2.1 AA) is defined at the project level and applies here by default",
+    "issueType": "Story",
+    "status": "Idea",
+    "priority": "High",
+    "assignee": null,
+    "reporter": "Ali Saeed",
+    "labels": [
+      "HIGH-ASSUMPTION-TEST"
+    ],
+    "acceptanceCriteria": "",
+    "storyPoints": null,
+    "components": [],
+    "rawFields": {
+      "statuscategorychangedate": "2026-06-23T18:18:32.752-0500",
+      "issuetype": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issuetype/10005",
+        "id": "10005",
+        "description": "Stories track functionality or features expressed as user goals.",
+        "iconUrl": "https://healthyhumans.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+        "name": "Story",
+        "subtask": false,
+        "avatarId": 10315,
+        "entityId": "f79d92b3-67d3-42f4-aab5-5c4f8a2a048b",
+        "hierarchyLevel": 0
+      },
+      "components": [],
+      "timespent": null,
+      "timeoriginalestimate": null,
+      "project": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/project/10000",
+        "id": "10000",
+        "key": "SCRUM",
+        "name": "Healthy Humans",
+        "projectTypeKey": "software",
+        "simplified": true,
+        "avatarUrls": {
+          "48x48": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+          "24x24": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+          "16x16": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+          "32x32": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+        }
+      },
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "A logged-in patient should be able to navigate to their health profile and view their personal health information. The data displayed must reflect the most recently available records from the source system. The view must be accessible on both desktop and mobile web browsers.\n\nAcceptance Criteria:\n- Given I am a logged-in patient, when I navigate to my health profile, then I can see my health information including at minimum: diagnoses, medications, and last recorded vitals\n- Given I am viewing my health profile, when the page loads, then the data displayed matches the most recent records available in the source system at the time of the request\n- Given I am a logged-in patient, when I access my health profile on a mobile or desktop browser, then all health information is readable and accessible without horizontal scrolling or truncated content\n- Given I am not logged in, when I attempt to access a health profile URL directly, then I am redirected to the login page and no health information is displayed\n- Given I am a logged-in patient, when my health profile loads successfully, then the date and time the data was last refreshed is displayed on the screen\n\nOut of Scope:\n- Editing or updating health information directly from this view\n- Native mobile app implementation — web browser only for this ticket\n- Real-time or push-based data synchronisation with the source system\n- Health information for dependants or other linked accounts\n- Downloading or exporting health records\n\nAssumptions:\n- A patient authentication and session management system already exists\n- A source system or API that provides patient health data is available and documented\n- The minimum required health data fields are: diagnoses, medications, and last recorded vitals — these should be confirmed with clinical or product stakeholders before development begins\n- 'Most recently available records' means the latest data the source system holds at the time the page is requested, not a live feed\n- Accessibility compliance standard (e.g. WCAG 2.1 AA) is defined at the project level and applies here by default"
+              }
+            ]
+          }
+        ]
+      },
+      "fixVersions": [],
+      "aggregatetimespent": null,
+      "customfield_10034": null,
+      "statusCategory": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      },
+      "resolution": null,
+      "timetracking": {},
+      "customfield_10015": null,
+      "security": null,
+      "attachment": [],
+      "aggregatetimeestimate": null,
+      "resolutiondate": null,
+      "workratio": -1,
+      "summary": "As a patient, I want to view my personal health information in my profile so that I can stay informed about my current health status",
+      "issuerestriction": {
+        "issuerestrictions": {},
+        "shouldDisplay": true
+      },
+      "watches": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-30/watchers",
+        "watchCount": 1,
+        "isWatching": true
+      },
+      "lastViewed": null,
+      "creator": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "subtasks": [],
+      "created": "2026-06-23T18:18:32.457-0500",
+      "customfield_10020": null,
+      "customfield_10021": null,
+      "reporter": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "aggregateprogress": {
+        "progress": 0,
+        "total": 0
+      },
+      "priority": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/priority/2",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/priorities/high_new.svg",
+        "name": "High",
+        "id": "2"
+      },
+      "customfield_10001": null,
+      "labels": [
+        "HIGH-ASSUMPTION-TEST"
+      ],
+      "customfield_10016": null,
+      "environment": null,
+      "customfield_10019": "0|i0006f:",
+      "timeestimate": null,
+      "aggregatetimeoriginalestimate": null,
+      "versions": [],
+      "duedate": null,
+      "progress": {
+        "progress": 0,
+        "total": 0
+      },
+      "issuelinks": [],
+      "votes": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-30/votes",
+        "votes": 0,
+        "hasVoted": false
+      },
+      "comment": {
+        "comments": [],
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/10061/comment",
+        "maxResults": 0,
+        "total": 0,
+        "startAt": 0
+      },
+      "assignee": null,
+      "worklog": {
+        "startAt": 0,
+        "maxResults": 20,
+        "total": 0,
+        "worklogs": []
+      },
+      "updated": "2026-06-29T00:15:10.177-0500",
+      "status": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/status/10000",
+        "description": "",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/statuses/generic.png",
+        "name": "Idea",
+        "id": "10000",
+        "statusCategory": {
+          "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+          "id": 2,
+          "key": "new",
+          "colorName": "blue-gray",
+          "name": "To Do"
+        }
+      }
+    }
+  },
+  "analysis": {
+    "mode": "full",
+    "status": "not_ready",
+    "verifiedCount": 4,
+    "assumedCount": 13,
+    "verified": [
+      {
+        "claim": "A patient authentication and session management system already exists",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Identity verification: Email invite plus identity verification at enrollment. Shared email blocked."
+      },
+      {
+        "claim": "Role-based access control exists and a Patient role is live",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Role-based access control: Four roles live: Patient, Provider, Care Coordinator, Admin."
+      },
+      {
+        "claim": "Audit logging is in place for data access events and is HIPAA compliant",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Audit logging: Immutable audit trail for all data access events. HIPAA compliant."
+      },
+      {
+        "claim": "Patient profile management exists allowing patients to update contact information, communication preferences, and emergency contacts",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Patient profile management: Patients can update contact information, communication preferences, and emergency contacts."
+      }
+    ],
+    "assumed": [
+      {
+        "claim": "A logged-in patient can view personal health information including diagnoses, medications, and last recorded vitals in their health profile",
+        "reason": "No documentation confirms a health profile view featuring diagnoses, medications, or vitals exists or is planned. This feature is not listed under Built & Shipped, In Progress, or any backlog item in the documentation.",
+        "pmAction": "Confirm whether a health information profile view (distinct from patient profile management) has been formally scoped and approved. Validate required data fields with clinical or product stakeholders before development begins."
+      },
+      {
+        "claim": "A source system or API that provides patient health data (diagnoses, medications, vitals) is available and documented",
+        "reason": "No documentation confirms the existence or availability of a source system or API supplying diagnoses, medications, or vitals. FHIR integration is referenced only for appointments and lab results in the documentation.",
+        "pmAction": "Confirm that the relevant source system or API is available, documented, and accessible to the development team before sprint planning."
+      },
+      {
+        "claim": "The data displayed must reflect the most recently available records from the source system at the time of the request",
+        "reason": "No documentation confirms this data freshness or retrieval behaviour for a health profile view.",
+        "pmAction": "Confirm the data retrieval pattern and what 'most recently available' means in the context of the specific source system being integrated."
+      },
+      {
+        "claim": "The date and time the data was last refreshed is displayed on the screen when the health profile loads successfully",
+        "reason": "No documentation confirms this UI requirement exists or has been approved for any feature.",
+        "pmAction": "Confirm this display requirement with the product owner and ensure it aligns with UX standards defined at the project level."
+      },
+      {
+        "claim": "The view must be accessible on both desktop and mobile web browsers without horizontal scrolling or truncated content",
+        "reason": "No documentation confirms responsive design or mobile web accessibility requirements for any specific feature or for this ticket's scope.",
+        "pmAction": "Confirm that project-level responsive design and accessibility standards (e.g. WCAG 2.1 AA) are formally documented and apply to this feature, and obtain a reference to that documentation."
+      },
+      {
+        "claim": "Accessibility compliance standard (e.g. WCAG 2.1 AA) is defined at the project level and applies here by default",
+        "reason": "No documentation confirms that WCAG 2.1 AA or any accessibility standard is defined at the project level.",
+        "pmAction": "Locate and link the project-level accessibility compliance documentation to this ticket to confirm the applicable standard."
+      },
+      {
+        "claim": "If a user is not logged in and attempts to access a health profile URL directly, they are redirected to the login page and no health information is displayed",
+        "reason": "No documentation confirms this unauthenticated redirect behaviour for any feature or URL pattern.",
+        "pmAction": "Confirm with the engineering team that unauthenticated redirect behaviour is implemented globally or must be explicitly built for this feature."
+      },
+      {
+        "claim": "Editing or updating health information directly from this view is out of scope for this ticket",
+        "reason": "While the ticket lists this as out of scope, no documentation confirms or contradicts this scoping decision for a health information view feature, as the feature itself is not documented.",
+        "pmAction": "Ensure the out-of-scope boundary is formally recorded in the backlog and communicated to stakeholders to prevent scope creep."
+      },
+      {
+        "claim": "Real-time or push-based data synchronisation with the source system is out of scope for this ticket",
+        "reason": "While the ticket lists this as out of scope, no documentation confirms or contradicts this decision for a health information view feature.",
+        "pmAction": "Confirm this out-of-scope decision is aligned with product and engineering leadership and record it in the feature backlog."
+      },
+      {
+        "claim": "Health information for dependants or other linked accounts is out of scope for this ticket",
+        "reason": "No documentation references dependant or linked account functionality in any capacity.",
+        "pmAction": "Confirm whether dependant account support is on the product roadmap and ensure this out-of-scope boundary is documented in the backlog."
+      },
+      {
+        "claim": "Downloading or exporting health records is out of scope for this ticket",
+        "reason": "No documentation references health record download or export functionality.",
+        "pmAction": "Confirm whether this capability is planned for a future ticket and ensure the out-of-scope decision is captured in the feature backlog."
+      },
+      {
+        "claim": "Native mobile app implementation is out of scope — web browser only for this ticket",
+        "reason": "No documentation confirms the existence of a native mobile app or any decision about its scope relative to this feature.",
+        "pmAction": "Confirm whether a native mobile app is on the product roadmap and ensure this out-of-scope boundary is formally recorded."
+      },
+      {
+        "claim": "The minimum required health data fields (diagnoses, medications, last recorded vitals) should be confirmed with clinical or product stakeholders before development begins",
+        "reason": "No documentation confirms these fields, their definitions, or that clinical stakeholder sign-off is required or has been obtained.",
+        "pmAction": "Obtain formal sign-off from clinical and product stakeholders on the minimum required health data fields before this ticket enters development."
+      }
+    ],
+    "structuralIssues": [
+      "Acceptance criteria contain ambiguous scope — 'all health information' in the responsive design criterion uses the word 'all' which is vague and untestable",
+      "Missing edge case: no acceptance criterion covers what happens when the source system is unavailable or returns an error",
+      "Missing edge case: no acceptance criterion covers what happens when the patient has no data available for one or more fields (e.g. no recorded vitals)",
+      "Missing edge case: no acceptance criterion covers session expiry while the patient is viewing their health profile",
+      "Missing edge case: no acceptance criterion covers what the patient sees if the data returned is partial or incomplete"
+    ],
+    "refinedTicket": {
+      "summary": "As a patient, I want to view my personal health information in my profile so that I can stay informed about my current health status",
+      "description": "A logged-in patient should be able to navigate to their health profile and view their personal health information, including at minimum their diagnoses, medications, and last recorded vitals. The data displayed must reflect the most recently available records from the source system at the time of the request. The view must be accessible on both desktop and mobile web browsers. Audit logging is in place and will capture data access events in compliance with HIPAA requirements. Access is governed by the existing Patient role within the platform's role-based access control system.",
+      "acceptanceCriteria": [
+        "Given I am a logged-in patient, when I navigate to my health profile, then I can see my health information including diagnoses, medications, and last recorded vitals, and the date and time the data was last refreshed is displayed on the screen",
+        "Given I am viewing my health profile, when the page loads, then the data displayed matches the most recent records available in the source system at the time of the request",
+        "Given I am a logged-in patient, when I access my health profile on a mobile or desktop browser, then all listed health information fields are readable and accessible without horizontal scrolling or truncated content",
+        "Given I am not logged in, when I attempt to access a health profile URL directly, then I am redirected to the login page and no health information is displayed",
+        "Given I am a logged-in patient viewing my health profile, when the source system is unavailable or returns an error, then I am shown a clear error message and no partial or stale data is silently displayed",
+        "Given I am a logged-in patient viewing my health profile, when one or more data fields have no records available, then I am shown a clear indication that no data is currently available for that field rather than a blank or missing section",
+        "Given I am a logged-in patient viewing my health profile, when my session expires, then I am redirected to the login page and no health information remains visible"
+      ],
+      "outOfScope": [
+        "Editing or updating health information directly from this view",
+        "Native mobile app implementation — web browser only for this ticket",
+        "Real-time or push-based data synchronisation with the source system",
+        "Health information for dependants or other linked accounts",
+        "Downloading or exporting health records"
+      ],
+      "assumptions": [
+        "A source system or API that provides patient health data is available and documented — this has not been independently verified and should be confirmed before development begins",
+        "The minimum required health data fields are diagnoses, medications, and last recorded vitals — these should be confirmed with clinical or product stakeholders before development begins",
+        "'Most recently available records' means the latest data the source system holds at the time the page is requested, not a live feed",
+        "The accessibility compliance standard applicable to this view (e.g. WCAG 2.1 AA) is defined at the project level — teams should confirm the target standard applies to this surface before QA sign-off",
+        "The behaviour expected when the source system returns partial data (i.e. some fields populated, others missing) should be confirmed with stakeholders — the current acceptance criterion treats a missing field as no-data rather than an error, but this distinction should be validated",
+        "Session expiry behaviour and timeout thresholds are governed by the existing authentication and session management system and are not being defined or changed by this ticket"
+      ]
+    },
+    "diff": {
+      "summary": {
+        "original": "As a patient, I want to view my personal health information in my profile so that I can stay informed about my current health status",
+        "revised": "No change."
+      },
+      "description": {
+        "original": "A logged-in patient should be able to navigate to their health profile and view their personal health information. The data displayed must reflect the most recently available records from the source system. The view must be accessible on both desktop and mobile web browsers.",
+        "revised": "Added reference to the existing Patient role and role-based access control system (verified fact). Added reference to audit logging being in place and HIPAA compliant (verified fact). Clarified that 'most recently available records' is scoped to the time of the request, consistent with the original assumptions. No other changes to core intent."
+      },
+      "acceptanceCriteria": {
+        "original": "5 criteria covering: health data visibility, data freshness, responsive design, unauthenticated access redirect, and last-refreshed timestamp display. Issues: 'all health information' was vague and untestable in the responsive design criterion; no coverage of source system errors, missing/empty data fields, session expiry during viewing, or partial data returned.",
+        "revised": "Consolidated the last-refreshed timestamp criterion into the health data visibility criterion to stay within the 7-criterion limit. Tightened the responsive design criterion to reference 'all listed health information fields' rather than 'all health information' to remove ambiguity. Added four new criteria covering: source system unavailability or error, missing data for one or more fields, session expiry while viewing, and retained the redirect for unauthenticated access. All criteria use Given/When/Then format and are independently testable."
+      }
+    },
+    "confluenceLinks": [
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/2195457/Healthy+Humans+Agent+0+Keyword+Patterns",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703978/Healthy+Humans+Notification+Messaging+Rules",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions"
+    ],
+    "confluencePageCount": 3,
+    "confluencePageTitles": [
+      "Healthy Humans — Agent 0 Keyword Patterns",
+      "Healthy Humans — Notification & Messaging Rules",
+      "Healthy Humans — Feature Backlog & Sprint Decisions"
+    ],
+    "escalationMessage": "This ticket has 13 assumptions. Resolve the items in the assumed list before presenting to the team."
+  },
+  "confluencePages": [
+    {
+      "id": "2195457",
+      "title": "Healthy Humans — Agent 0 Keyword Patterns",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/2195457/Healthy+Humans+Agent+0+Keyword+Patterns",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "1703978",
+      "title": "Healthy Humans — Notification & Messaging Rules",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703978/Healthy+Humans+Notification+Messaging+Rules",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "1703958",
+      "title": "Healthy Humans — Feature Backlog & Sprint Decisions",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    }
+  ]
+}

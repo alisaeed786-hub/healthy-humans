@@ -1,0 +1,328 @@
+{
+  "ticket": {
+    "key": "SCRUM-22",
+    "summary": "As a patient, I want to cancel or reschedule appointments online so I don't have to call the clinic",
+    "description": "Patient can cancel or reschedule any upcoming appointment with at least 24hr notice. Cancellation must trigger email confirmation to both patient and provider. Must handle same-day cancellation edge case.",
+    "issueType": "Feature",
+    "status": "Idea",
+    "priority": "Medium",
+    "assignee": null,
+    "reporter": "Ali Saeed",
+    "labels": [],
+    "acceptanceCriteria": "",
+    "storyPoints": null,
+    "components": [],
+    "rawFields": {
+      "statuscategorychangedate": "2026-06-23T16:49:25.107-0500",
+      "issuetype": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issuetype/10003",
+        "id": "10003",
+        "description": "A broad piece of functionality.",
+        "iconUrl": "https://healthyhumans.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10314?size=medium",
+        "name": "Feature",
+        "subtask": false,
+        "avatarId": 10314,
+        "entityId": "ac358462-7744-43ce-b6a7-453e159b1d94",
+        "hierarchyLevel": 0
+      },
+      "components": [],
+      "timespent": null,
+      "timeoriginalestimate": null,
+      "project": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/project/10000",
+        "id": "10000",
+        "key": "SCRUM",
+        "name": "Healthy Humans",
+        "projectTypeKey": "software",
+        "simplified": true,
+        "avatarUrls": {
+          "48x48": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+          "24x24": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+          "16x16": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+          "32x32": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+        }
+      },
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Patient can cancel or reschedule any upcoming appointment with at least 24hr notice. Cancellation must trigger email confirmation to both patient and provider. Must handle same-day cancellation edge case."
+              }
+            ],
+            "attrs": {
+              "localId": "0da28b7a6f6c"
+            }
+          }
+        ]
+      },
+      "fixVersions": [],
+      "aggregatetimespent": null,
+      "customfield_10034": null,
+      "statusCategory": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      },
+      "resolution": null,
+      "timetracking": {},
+      "customfield_10015": null,
+      "security": null,
+      "attachment": [],
+      "aggregatetimeestimate": null,
+      "resolutiondate": null,
+      "workratio": -1,
+      "summary": "As a patient, I want to cancel or reschedule appointments online so I don't have to call the clinic",
+      "issuerestriction": {
+        "issuerestrictions": {},
+        "shouldDisplay": true
+      },
+      "watches": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-22/watchers",
+        "watchCount": 0,
+        "isWatching": false
+      },
+      "lastViewed": null,
+      "creator": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "subtasks": [],
+      "created": "2026-06-23T16:49:24.610-0500",
+      "customfield_10020": null,
+      "customfield_10021": [
+        {
+          "self": "https://healthyhumans.atlassian.net/rest/api/3/customFieldOption/10019",
+          "value": "Impediment",
+          "id": "10019"
+        }
+      ],
+      "reporter": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "aggregateprogress": {
+        "progress": 0,
+        "total": 0
+      },
+      "priority": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/priority/3",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/priorities/medium_new.svg",
+        "name": "Medium",
+        "id": "3"
+      },
+      "customfield_10001": null,
+      "labels": [],
+      "customfield_10016": null,
+      "environment": null,
+      "customfield_10019": "0|i0004n:",
+      "timeestimate": null,
+      "aggregatetimeoriginalestimate": null,
+      "versions": [],
+      "duedate": null,
+      "progress": {
+        "progress": 0,
+        "total": 0
+      },
+      "issuelinks": [],
+      "votes": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-22/votes",
+        "votes": 0,
+        "hasVoted": false
+      },
+      "comment": {
+        "comments": [],
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/10053/comment",
+        "maxResults": 0,
+        "total": 0,
+        "startAt": 0
+      },
+      "assignee": null,
+      "worklog": {
+        "startAt": 0,
+        "maxResults": 20,
+        "total": 0,
+        "worklogs": []
+      },
+      "updated": "2026-06-23T16:49:24.900-0500",
+      "status": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/status/10000",
+        "description": "",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/statuses/generic.png",
+        "name": "Idea",
+        "id": "10000",
+        "statusCategory": {
+          "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+          "id": 2,
+          "key": "new",
+          "colorName": "blue-gray",
+          "name": "To Do"
+        }
+      }
+    }
+  },
+  "analysis": {
+    "mode": "full",
+    "status": "caution",
+    "verifiedCount": 3,
+    "assumedCount": 5,
+    "verified": [
+      {
+        "claim": "Patient can cancel any upcoming appointment with at least 24hr notice",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Appointment cancellation: Patients can cancel with 24-hour notice."
+      },
+      {
+        "claim": "Cancellation must trigger email confirmation to the patient",
+        "source": "Healthy Humans — Notification & Messaging Rules",
+        "quote": "Appointment cancelled (patient-initiated): Channels: in-app + email. Content: cancelled appointment details and link to rebook."
+      },
+      {
+        "claim": "Rescheduling is a feature being worked on",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Appointment rescheduling: UI and FHIR update in prog"
+      }
+    ],
+    "assumed": [
+      {
+        "claim": "Patient can reschedule any upcoming appointment online",
+        "reason": "Rescheduling is marked as In Progress in the backlog with no confirmed completion. No documentation confirms this feature is shipped or fully specified.",
+        "pmAction": "Confirm whether rescheduling will be completed and merged into this ticket or tracked separately before including it in scope."
+      },
+      {
+        "claim": "Cancellation or rescheduling requires at least 24hr notice for rescheduling specifically",
+        "reason": "The 24-hour notice rule is documented only for cancellation. No documentation applies this rule to rescheduling.",
+        "pmAction": "Confirm whether the 24-hour notice requirement applies to rescheduling and add to documentation if so."
+      },
+      {
+        "claim": "Cancellation must trigger email confirmation to the provider",
+        "reason": "No exact sentence in the documentation states that a provider receives an email notification on patient-initiated cancellation. The notification rule for patient-initiated cancellation mentions channels for the patient side only.",
+        "pmAction": "Confirm whether provider email notification on patient-initiated cancellation is required and document the rule in Notification & Messaging Rules."
+      },
+      {
+        "claim": "Must handle same-day cancellation edge case",
+        "reason": "No documentation defines behavior for same-day cancellations. The 24-hour notice rule implies same-day cancellations may not be permitted, but no explicit edge case handling is documented.",
+        "pmAction": "Clarify whether same-day cancellation is allowed, what the system behavior should be if it is attempted, and document the decision in Feature Backlog & Sprint Decisions."
+      },
+      {
+        "claim": "Patient can cancel or reschedule without calling the clinic",
+        "reason": "While online cancellation is documented as shipped, no documentation explicitly states this replaces or eliminates the need to call the clinic, and rescheduling is not yet confirmed as shipped.",
+        "pmAction": "Confirm the full self-service scope is supported end-to-end before communicating this as a patient-facing capability."
+      }
+    ],
+    "structuralIssues": [
+      "No acceptance criteria present",
+      "No out of scope items defined",
+      "No assumptions documented",
+      "Ambiguous scope — 'any upcoming appointment' uses vague qualifier 'any' without defining appointment types, statuses, or ownership constraints",
+      "Missing edge case: what happens if the appointment is less than 24 hours away and the patient attempts to cancel or reschedule",
+      "Missing edge case: what happens if the provider cancels or reschedules the appointment",
+      "Missing edge case: what happens if the patient has already cancelled or rescheduled the same appointment previously",
+      "Missing edge case: behaviour when the rescheduled slot is unavailable or no slots exist",
+      "Missing edge case: what happens if the email notification fails to send to patient or provider"
+    ],
+    "refinedTicket": {
+      "summary": "As a patient, I want to cancel or reschedule my upcoming appointments online so I don't have to call the clinic",
+      "description": "Patients need the ability to cancel or reschedule their own upcoming appointments directly through the patient-facing interface, without needing to contact the clinic by phone. Cancellation is permitted when the appointment is at least 24 hours away. Upon successful cancellation, both the patient and provider must receive an email confirmation. Rescheduling functionality is currently in progress (UI and FHIR update) and should be scoped accordingly. This ticket covers patient-initiated actions only. The system must handle edge cases including: attempts to cancel or reschedule within 24 hours of the appointment, unavailable or nonexistent rescheduling slots, duplicate cancellation or reschedule attempts on the same appointment, and email notification delivery failures.",
+      "acceptanceCriteria": [
+        "Given a patient has an upcoming appointment that is more than 24 hours away, when they choose to cancel it, then the appointment is successfully cancelled and a confirmation email is sent to the patient containing the cancelled appointment details and a link to rebook.",
+        "Given a patient has an upcoming appointment that is more than 24 hours away, when they choose to cancel it, then a notification is sent to the provider confirming the cancellation.",
+        "Given a patient attempts to cancel or reschedule an appointment that is less than 24 hours away, when they submit the request, then the action is blocked and the patient is shown a clear message explaining that changes require at least 24 hours notice.",
+        "Given a patient attempts to cancel an appointment they have already cancelled, when they submit the request, then the system prevents a duplicate action and displays an appropriate status message.",
+        "Given a patient is rescheduling an appointment, when they attempt to select a new time and no available slots exist, then the patient is informed that no slots are available and no changes are made to the existing appointment.",
+        "Given a cancellation is successfully processed but the email notification fails to deliver to the patient or provider, when the failure occurs, then the cancellation is still recorded and the failure is logged so it can be investigated or retried.",
+        "Given a patient views their upcoming appointments, when they interact with the cancel or reschedule options, then only appointments belonging to that patient are eligible for modification."
+      ],
+      "outOfScope": [
+        "Provider-initiated cancellation or rescheduling of appointments.",
+        "Cancellation or rescheduling of past or same-day appointments (within 24-hour window).",
+        "Non-email notification channels such as SMS or push notifications (not confirmed in verified facts for this flow).",
+        "Admin or clinic-staff-initiated appointment changes.",
+        "Automated rebooking or waitlist management following a cancellation."
+      ],
+      "assumptions": [
+        "Provider email notification on cancellation is assumed to be required based on the original ticket description, but could not be confirmed from verified facts — this must be validated with the product owner before development.",
+        "Rescheduling is in progress (UI and FHIR update) but its full acceptance criteria, availability logic, and readiness for this ticket have not been confirmed — rescheduling scope may need to be split into a separate ticket once the feature is stable.",
+        "The 24-hour notice rule is assumed to apply equally to both cancellation and rescheduling, but this was only explicitly confirmed for cancellation — rescheduling cutoff logic must be confirmed.",
+        "The definition of 'upcoming appointment' (e.g. appointment types, statuses such as confirmed vs pending, ownership such as booked by patient vs booked on behalf of patient) has not been confirmed and must be clarified before development begins.",
+        "Email delivery retry or fallback behaviour on notification failure is assumed to be handled by existing infrastructure — this must be confirmed with engineering."
+      ]
+    },
+    "diff": {
+      "summary": {
+        "original": "As a patient, I want to cancel or reschedule appointments online so I don't have to call the clinic",
+        "revised": "As a patient, I want to cancel or reschedule my upcoming appointments online so I don't have to call the clinic — added 'my' to reflect ownership constraint identified as ambiguous in the original"
+      },
+      "description": {
+        "original": "Patient can cancel or reschedule any upcoming appointment with at least 24hr notice. Cancellation must trigger email confirmation to both patient and provider. Must handle same-day cancellation edge case.",
+        "revised": "Expanded to remove vague qualifier 'any', scope to patient-owned appointments only, note rescheduling in-progress status per verified facts, and explicitly enumerate all unhandled edge cases identified in the structural review. Provider notification retained from original intent but flagged as unconfirmed in assumptions."
+      },
+      "acceptanceCriteria": {
+        "original": "None provided.",
+        "revised": "Seven acceptance criteria added in testable Given/When/Then format covering: successful cancellation with patient email, provider notification, sub-24-hour block, duplicate cancellation prevention, no-slots-available handling, email failure resilience, and patient ownership scoping."
+      }
+    },
+    "confluenceLinks": [
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/2195457/Healthy+Humans+Agent+0+Keyword+Patterns",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703978/Healthy+Humans+Notification+Messaging+Rules",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions"
+    ],
+    "confluencePageCount": 3,
+    "confluencePageTitles": [
+      "Healthy Humans — Agent 0 Keyword Patterns",
+      "Healthy Humans — Notification & Messaging Rules",
+      "Healthy Humans — Feature Backlog & Sprint Decisions"
+    ]
+  },
+  "confluencePages": [
+    {
+      "id": "2195457",
+      "title": "Healthy Humans — Agent 0 Keyword Patterns",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/2195457/Healthy+Humans+Agent+0+Keyword+Patterns",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "1703978",
+      "title": "Healthy Humans — Notification & Messaging Rules",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703978/Healthy+Humans+Notification+Messaging+Rules",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "1703958",
+      "title": "Healthy Humans — Feature Backlog & Sprint Decisions",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    }
+  ]
+}

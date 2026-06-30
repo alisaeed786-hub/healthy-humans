@@ -1,0 +1,458 @@
+{
+  "ticket": {
+    "key": "SCRUM-11",
+    "summary": "As a patient I want to view my lab results in the portal so I can review them after my appointment",
+    "description": "Lab result viewing is an existing feature. This ticket ensures FHIR\n\nObservation resource display is consistent and notification delivery\n\nmeets the 30-minute SLA. All result access must be logged in the\n\naudit trail per HIPAA requirements..Given I am a logged in patient\n\nWhen I navigate to the results section\n\nThen I can view my lab results displayed as FHIR Observation resourcesGiven a lab result has been processed and is ready\n\nWhen it becomes available in the system\n\nThen I receive both an email and in-app notification within 30 minutes of result arrivalGiven a notification is sent\n\nWhen it is delivered\n\nThen the notification content must contain only the message: \"Your lab results are ready. Log in to view them.\" with no result details in the notification bodyGiven I access my lab results\n\nWhen the access event occurs\n\nThen it is recorded in the immutable audit trail",
+    "issueType": "Story",
+    "status": "Idea",
+    "priority": "Medium",
+    "assignee": null,
+    "reporter": "Ali Saeed",
+    "labels": [],
+    "acceptanceCriteria": "",
+    "storyPoints": null,
+    "components": [],
+    "rawFields": {
+      "statuscategorychangedate": "2026-06-20T12:58:21.061-0500",
+      "issuetype": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issuetype/10005",
+        "id": "10005",
+        "description": "Stories track functionality or features expressed as user goals.",
+        "iconUrl": "https://healthyhumans.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+        "name": "Story",
+        "subtask": false,
+        "avatarId": 10315,
+        "entityId": "f79d92b3-67d3-42f4-aab5-5c4f8a2a048b",
+        "hierarchyLevel": 0
+      },
+      "components": [],
+      "timespent": null,
+      "timeoriginalestimate": null,
+      "project": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/project/10000",
+        "id": "10000",
+        "key": "SCRUM",
+        "name": "Healthy Humans",
+        "projectTypeKey": "software",
+        "simplified": true,
+        "avatarUrls": {
+          "48x48": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+          "24x24": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+          "16x16": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+          "32x32": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+        }
+      },
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Lab result viewing is an existing feature. This ticket ensures FHIR"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "Observation resource display is consistent and notification delivery"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "meets the 30-minute SLA. All result access must be logged in the"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "audit trail per HIPAA requirements.."
+              }
+            ],
+            "attrs": {
+              "localId": "7b93760b8d54"
+            }
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Given I am a logged in patient"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "When I navigate to the results section"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "Then I can view my lab results displayed as FHIR Observation resources"
+              }
+            ],
+            "attrs": {
+              "localId": "19c105eed4cd"
+            }
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Given a lab result has been processed and is ready"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "When it becomes available in the system"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "Then I receive both an email and in-app notification within 30 minutes of result arrival"
+              }
+            ],
+            "attrs": {
+              "localId": "e1fe8e3d3f8d"
+            }
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Given a notification is sent"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "When it is delivered"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "Then the notification content must contain only the message: \"Your lab results are ready. Log in to view them.\" with no result details in the notification body"
+              }
+            ],
+            "attrs": {
+              "localId": "8beef551654b"
+            }
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Given I access my lab results"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "When the access event occurs"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "Then it is recorded in the immutable audit trail"
+              }
+            ],
+            "attrs": {
+              "localId": "f14febedfb85"
+            }
+          }
+        ]
+      },
+      "fixVersions": [],
+      "aggregatetimespent": null,
+      "customfield_10034": null,
+      "statusCategory": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      },
+      "resolution": null,
+      "timetracking": {},
+      "customfield_10015": null,
+      "security": null,
+      "attachment": [],
+      "aggregatetimeestimate": null,
+      "resolutiondate": null,
+      "workratio": -1,
+      "summary": "As a patient I want to view my lab results in the portal so I can review them after my appointment",
+      "issuerestriction": {
+        "issuerestrictions": {},
+        "shouldDisplay": true
+      },
+      "watches": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-11/watchers",
+        "watchCount": 1,
+        "isWatching": true
+      },
+      "lastViewed": "2026-06-30T17:10:16.497-0500",
+      "creator": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "subtasks": [],
+      "created": "2026-06-20T12:58:20.838-0500",
+      "customfield_10020": [
+        {
+          "id": 1,
+          "name": "SCRUM Sprint 1",
+          "state": "active",
+          "boardId": 1,
+          "goal": "",
+          "startDate": "2026-06-20T18:00:33.814Z",
+          "endDate": "2026-07-04T18:00:29.000Z"
+        }
+      ],
+      "customfield_10021": null,
+      "reporter": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "aggregateprogress": {
+        "progress": 0,
+        "total": 0
+      },
+      "priority": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/priority/3",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/priorities/medium_new.svg",
+        "name": "Medium",
+        "id": "3"
+      },
+      "customfield_10001": null,
+      "labels": [],
+      "customfield_10016": null,
+      "environment": null,
+      "customfield_10019": "0|i00027:",
+      "timeestimate": null,
+      "aggregatetimeoriginalestimate": null,
+      "versions": [],
+      "duedate": null,
+      "progress": {
+        "progress": 0,
+        "total": 0
+      },
+      "issuelinks": [],
+      "votes": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-11/votes",
+        "votes": 0,
+        "hasVoted": false
+      },
+      "comment": {
+        "comments": [],
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/10010/comment",
+        "maxResults": 0,
+        "total": 0,
+        "startAt": 0
+      },
+      "assignee": null,
+      "worklog": {
+        "startAt": 0,
+        "maxResults": 20,
+        "total": 0,
+        "worklogs": []
+      },
+      "updated": "2026-06-30T17:24:24.753-0500",
+      "status": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/status/10000",
+        "description": "",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/statuses/generic.png",
+        "name": "Idea",
+        "id": "10000",
+        "statusCategory": {
+          "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+          "id": 2,
+          "key": "new",
+          "colorName": "blue-gray",
+          "name": "To Do"
+        }
+      }
+    }
+  },
+  "analysis": {
+    "mode": "full",
+    "status": "ready",
+    "verifiedCount": 6,
+    "assumedCount": 2,
+    "verified": [
+      {
+        "claim": "Lab result viewing is an existing feature",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Lab result viewing: Patients can view lab results as FHIR Observation resources. Result notification by email and in-app live."
+      },
+      {
+        "claim": "Lab results are displayed as FHIR Observation resources",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Lab result viewing: Patients can view lab results as FHIR Observation resources."
+      },
+      {
+        "claim": "Notifications are sent within 30 minutes of result arrival",
+        "source": "Healthy Humans — Notification & Messaging Rules",
+        "quote": "Lab result available: Sent within 30 minutes of result arrival."
+      },
+      {
+        "claim": "Both email and in-app notification are sent when a lab result is available",
+        "source": "Healthy Humans — Notification & Messaging Rules",
+        "quote": "Channels: in-app + email."
+      },
+      {
+        "claim": "Notification content must contain only the message: 'Your lab results are ready. Log in to view them.' with no result details in the notification body",
+        "source": "Healthy Humans — Notification & Messaging Rules",
+        "quote": "Content: \"Your lab results are ready. Log in to view them.\" No result details in notification body."
+      },
+      {
+        "claim": "Lab result access is recorded in an immutable audit trail per HIPAA requirements",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Audit logging: Immutable audit trail for all data access events. HIPAA compliant."
+      }
+    ],
+    "assumed": [
+      {
+        "claim": "This ticket ensures FHIR Observation resource display is consistent — implying display consistency work is needed or in scope",
+        "reason": "No documentation states that display consistency is an outstanding gap or a current sprint item. The feature is listed as already shipped with no noted deficiencies.",
+        "pmAction": "PM must confirm whether a consistency issue exists or if this ticket duplicates already-shipped functionality without a formal reversal of scope decision."
+      },
+      {
+        "claim": "Acceptance Criteria are listed as 'none'",
+        "reason": "No documentation permits omission of acceptance criteria for compliance-related tickets. The ticket contains detailed Given/When/Then scenarios in the description but the Acceptance Criteria field is explicitly empty, creating a traceability gap.",
+        "pmAction": "PM must populate the Acceptance Criteria field by formalising the Given/When/Then scenarios already present in the description before the ticket enters a sprint."
+      }
+    ],
+    "structuralIssues": [
+      "No acceptance criteria present in the Acceptance Criteria field — the Given/When/Then scenarios are embedded in the Description field rather than structured as formal acceptance criteria",
+      "No out of scope items defined",
+      "No assumptions documented",
+      "Ambiguous scope — description uses 'All result access must be logged' which is vague and absolute",
+      "Missing edge case: what happens if the notification cannot be delivered within the 30-minute SLA (e.g., email bounce, push notification failure)",
+      "Missing edge case: what happens when a patient has no lab results to display",
+      "Missing edge case: behavior when lab results are partially processed or in an error state",
+      "Missing edge case: what happens if the patient is not logged in when the notification arrives — does the 30-minute SLA still apply to delivery or viewing",
+      "Technical prescription — description mandates FHIR Observation resource as the display format, telling engineers how to build rather than what the patient needs to see",
+      "Missing edge case: handling of critical or abnormal lab results — whether any different notification or display behavior is required"
+    ],
+    "refinedTicket": {
+      "summary": "As a patient I want to view my lab results in the portal and be notified when they are ready so I can review them after my appointment",
+      "description": "Lab result viewing is an existing feature. This ticket ensures that lab result display is consistent, that patients receive timely notifications when results are available, and that all result access is recorded in the audit trail per HIPAA requirements. Notifications must not include any result details in the notification body. Behavior for edge cases — including undeliverable notifications, empty result states, partially processed results, and critical or abnormal results — should be clarified with the team before development begins.",
+      "acceptanceCriteria": [
+        "Given I am a logged-in patient, when I navigate to the results section, then my lab results are displayed in a clear and consistent format.",
+        "Given a lab result has been processed and is ready, when it becomes available in the system, then I receive both an email and in-app notification within 30 minutes of result arrival.",
+        "Given a notification is sent, when it is delivered, then the notification content contains only the message: 'Your lab results are ready. Log in to view them.' with no result details in the notification body.",
+        "Given I access my lab results, when the access event occurs, then it is recorded in the immutable audit trail.",
+        "Given a lab result notification cannot be delivered within 30 minutes — for example due to an email bounce or push notification failure — when the delivery failure occurs, then the system handles the failure gracefully and the outcome is recorded so it can be reviewed.",
+        "Given I am a logged-in patient, when I navigate to the results section and no lab results exist for my account, then I am shown a clear message indicating that no results are currently available.",
+        "Given a lab result is in a partially processed or error state, when I navigate to the results section, then the result is either clearly indicated as pending or not displayed, and I am not shown incomplete or misleading information."
+      ],
+      "outOfScope": [
+        "Downloading or exporting lab results.",
+        "Sharing lab results with third parties or other providers.",
+        "Modifying or annotating lab results within the portal.",
+        "Any change to how lab results are stored or processed upstream of the portal display.",
+        "Notification preferences or the ability for patients to opt out of lab result notifications."
+      ],
+      "assumptions": [
+        "The 30-minute SLA applies to notification delivery, not to when the patient views the result. Whether the SLA clock resets or is voided if the patient is not logged in at the time of delivery has not been confirmed and should be clarified.",
+        "Critical or abnormal lab results have not been confirmed to require different display behavior or a different notification treatment. This should be confirmed with clinical and compliance stakeholders before development begins.",
+        "The behavior expected when a notification is undeliverable — including retry logic, alerting, or escalation — has not been defined and should be confirmed with the team.",
+        "It has not been confirmed whether partially processed or errored results should be hidden entirely or shown with a status indicator. This should be clarified before development begins.",
+        "Audit logging of notification delivery events specifically has not been confirmed as a requirement. Only patient access to lab results is confirmed as audit-logged."
+      ]
+    },
+    "diff": {
+      "summary": {
+        "original": "As a patient I want to view my lab results in the portal so I can review them after my appointment",
+        "revised": "As a patient I want to view my lab results in the portal and be notified when they are ready so I can review them after my appointment"
+      },
+      "description": {
+        "original": "Lab result viewing is an existing feature. This ticket ensures FHIR Observation resource display is consistent and notification delivery meets the 30-minute SLA. All result access must be logged in the audit trail per HIPAA requirements. [Followed by embedded Given/When/Then scenarios inline in the description field with no formal structure.]",
+        "revised": "Removed technical prescription mandating FHIR Observation resource as the display format so engineers are not told how to build. Replaced 'All result access must be logged' with scoped, specific language referencing the confirmed audit trail requirement. Removed embedded Given/When/Then scenarios from the description and relocated them as formal acceptance criteria. Added reference to unresolved edge cases requiring team input before development. Description now provides context and intent only."
+      },
+      "acceptanceCriteria": {
+        "original": "None — all Given/When/Then scenarios were embedded in the Description field with no content in the Acceptance Criteria field.",
+        "revised": "Extracted and reformatted all four original Given/When/Then scenarios as formal acceptance criteria. Removed technical prescription referencing FHIR Observation resource from the display criterion. Added three new criteria covering notification delivery failure, empty results state, and partially processed or errored results. Total criteria: 7, within the maximum limit."
+      }
+    },
+    "confluenceLinks": [
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/2195457/Healthy+Humans+Agent+0+Keyword+Patterns",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703978/Healthy+Humans+Notification+Messaging+Rules",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions"
+    ],
+    "confluencePageCount": 3,
+    "confluencePageTitles": [
+      "Healthy Humans — Agent 0 Keyword Patterns",
+      "Healthy Humans — Notification & Messaging Rules",
+      "Healthy Humans — Feature Backlog & Sprint Decisions"
+    ]
+  },
+  "confluencePages": [
+    {
+      "id": "2195457",
+      "title": "Healthy Humans — Agent 0 Keyword Patterns",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/2195457/Healthy+Humans+Agent+0+Keyword+Patterns",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "1703978",
+      "title": "Healthy Humans — Notification & Messaging Rules",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703978/Healthy+Humans+Notification+Messaging+Rules",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "1703958",
+      "title": "Healthy Humans — Feature Backlog & Sprint Decisions",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    }
+  ]
+}

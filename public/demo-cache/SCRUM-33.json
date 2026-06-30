@@ -1,0 +1,338 @@
+{
+  "ticket": {
+    "key": "SCRUM-33",
+    "summary": "As a parent, I want to see my 14-year-old's full medical record including mental health notes so I can monitor their health",
+    "description": "Parents should have full access to all medical records for their minor children including clinical notes, mental health records, STI test results, and prescription history. The parent should be able to download a full PDF of the record at any time. Access should not require any additional verification beyond the existing proxy login. The feature should send the parent an email every time a new result or note is added to their child's record with the full details in the email body. There is no age restriction on this access.",
+    "issueType": "Story",
+    "status": "Idea",
+    "priority": "High",
+    "assignee": null,
+    "reporter": "Ali Saeed",
+    "labels": [
+      "HIGH-ASSUMPTION-TEST"
+    ],
+    "acceptanceCriteria": "",
+    "storyPoints": null,
+    "components": [],
+    "rawFields": {
+      "statuscategorychangedate": "2026-06-23T18:18:57.394-0500",
+      "issuetype": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issuetype/10005",
+        "id": "10005",
+        "description": "Stories track functionality or features expressed as user goals.",
+        "iconUrl": "https://healthyhumans.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+        "name": "Story",
+        "subtask": false,
+        "avatarId": 10315,
+        "entityId": "f79d92b3-67d3-42f4-aab5-5c4f8a2a048b",
+        "hierarchyLevel": 0
+      },
+      "components": [],
+      "timespent": null,
+      "timeoriginalestimate": null,
+      "project": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/project/10000",
+        "id": "10000",
+        "key": "SCRUM",
+        "name": "Healthy Humans",
+        "projectTypeKey": "software",
+        "simplified": true,
+        "avatarUrls": {
+          "48x48": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+          "24x24": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+          "16x16": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+          "32x32": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+        }
+      },
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Parents should have full access to all medical records for their minor children including clinical notes, mental health records, STI test results, and prescription history. The parent should be able to download a full PDF of the record at any time. Access should not require any additional verification beyond the existing proxy login. The feature should send the parent an email every time a new result or note is added to their child's record with the full details in the email body. There is no age restriction on this access."
+              }
+            ]
+          }
+        ]
+      },
+      "fixVersions": [],
+      "aggregatetimespent": null,
+      "customfield_10034": null,
+      "statusCategory": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      },
+      "resolution": null,
+      "timetracking": {},
+      "customfield_10015": null,
+      "security": null,
+      "attachment": [],
+      "aggregatetimeestimate": null,
+      "resolutiondate": null,
+      "workratio": -1,
+      "summary": "As a parent, I want to see my 14-year-old's full medical record including mental health notes so I can monitor their health",
+      "issuerestriction": {
+        "issuerestrictions": {},
+        "shouldDisplay": true
+      },
+      "watches": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-33/watchers",
+        "watchCount": 1,
+        "isWatching": true
+      },
+      "lastViewed": null,
+      "creator": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "subtasks": [],
+      "created": "2026-06-23T18:18:57.078-0500",
+      "customfield_10020": null,
+      "customfield_10021": null,
+      "reporter": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "aggregateprogress": {
+        "progress": 0,
+        "total": 0
+      },
+      "priority": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/priority/2",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/priorities/high_new.svg",
+        "name": "High",
+        "id": "2"
+      },
+      "customfield_10001": null,
+      "labels": [
+        "HIGH-ASSUMPTION-TEST"
+      ],
+      "customfield_10016": null,
+      "environment": null,
+      "customfield_10019": "0|i00073:",
+      "timeestimate": null,
+      "aggregatetimeoriginalestimate": null,
+      "versions": [],
+      "duedate": null,
+      "progress": {
+        "progress": 0,
+        "total": 0
+      },
+      "issuelinks": [],
+      "votes": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-33/votes",
+        "votes": 0,
+        "hasVoted": false
+      },
+      "comment": {
+        "comments": [],
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/10064/comment",
+        "maxResults": 0,
+        "total": 0,
+        "startAt": 0
+      },
+      "assignee": null,
+      "worklog": {
+        "startAt": 0,
+        "maxResults": 20,
+        "total": 0,
+        "worklogs": []
+      },
+      "updated": "2026-06-23T18:18:57.167-0500",
+      "status": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/status/10000",
+        "description": "",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/statuses/generic.png",
+        "name": "Idea",
+        "id": "10000",
+        "statusCategory": {
+          "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+          "id": 2,
+          "key": "new",
+          "colorName": "blue-gray",
+          "name": "To Do"
+        }
+      }
+    }
+  },
+  "analysis": {
+    "mode": "full",
+    "status": "not_ready",
+    "verifiedCount": 0,
+    "assumedCount": 10,
+    "verified": [],
+    "assumed": [
+      {
+        "claim": "Parents should have full access to all medical records for their minor children",
+        "reason": "Contradicts HIPAA constraints. PM must resolve before sprint.",
+        "pmAction": "Documentation explicitly states 'Proxy and delegate access must be scoped to minimum necessary data — not full record access.' Full record access for proxy/parent is non-compliant. PM must redefine scope to minimum necessary data only."
+      },
+      {
+        "claim": "Parents should have access to clinical notes for their 14-year-old",
+        "reason": "Contradicts HIPAA constraints. PM must resolve before sprint.",
+        "pmAction": "Documentation explicitly states 'Clinical notes, mental health records, STI results, and substance abuse records are off-limits to proxies for this age group' (minors aged 12-17). PM must remove clinical notes from parent proxy access for this age group."
+      },
+      {
+        "claim": "Parents should have access to mental health records for their 14-year-old",
+        "reason": "Contradicts HIPAA constraints. PM must resolve before sprint.",
+        "pmAction": "Documentation explicitly states 'Clinical notes, mental health records, STI results, and substance abuse records are off-limits to proxies for this age group' (minors aged 12-17). PM must remove mental health records from parent proxy access."
+      },
+      {
+        "claim": "Parents should have access to STI test results for their 14-year-old",
+        "reason": "Contradicts HIPAA constraints. PM must resolve before sprint.",
+        "pmAction": "Documentation explicitly states 'Clinical notes, mental health records, STI results, and substance abuse records are off-limits to proxies for this age group' (minors aged 12-17). PM must remove STI results from parent proxy access."
+      },
+      {
+        "claim": "Parents should have access to prescription history for their 14-year-old",
+        "reason": "Contradicts HIPAA constraints. PM must resolve before sprint.",
+        "pmAction": "Documentation states proxy access must be scoped to minimum necessary data per state law for minors aged 12-17. Prescription history access for parents of minors in this age group is not confirmed as permissible. PM must obtain legal/compliance sign-off before including."
+      },
+      {
+        "claim": "The parent should be able to download a full PDF of the record at any time",
+        "reason": "Contradicts HIPAA constraints. PM must resolve before sprint.",
+        "pmAction": "Full record download contradicts the HIPAA Minimum Necessary Standard and the restriction on proxy access to sensitive minor records. PM must remove or significantly restrict this feature to compliant data only."
+      },
+      {
+        "claim": "Access should not require any additional verification beyond the existing proxy login",
+        "reason": "Contradicts documented product decision.",
+        "pmAction": "Documentation states 'Identity verification: Email invite plus identity verification at enrollment. Shared email blocked.' No confirmation that proxy login alone is sufficient for accessing sensitive records. PM must confirm whether additional verification is required for proxy record access."
+      },
+      {
+        "claim": "The feature should send the parent an email every time a new result or note is added to their child's record with the full details in the email body",
+        "reason": "Contradicts HIPAA constraints. PM must resolve before sprint.",
+        "pmAction": "Sending full clinical details including restricted records (mental health, STI, clinical notes) via email to a parent proxy violates HIPAA Minimum Necessary Standard and minor confidentiality protections. PM must redesign notification to exclude restricted data categories and confirm minimum necessary scope."
+      },
+      {
+        "claim": "There is no age restriction on this access",
+        "reason": "Contradicts HIPAA constraints. PM must resolve before sprint.",
+        "pmAction": "Documentation explicitly states 'Parent access to minor (12-17) records must be restricted per state law.' The ticket's claim of no age restriction directly contradicts this. PM must apply appropriate age-based restrictions."
+      },
+      {
+        "claim": "Acceptance Criteria: none",
+        "reason": "Contradicts documented product decision.",
+        "pmAction": "Documentation states 'Any ticket that does not address the relevant constraint will be returned to the PM before sprint commitment' and 'Every ticket touching these areas must explicitly address the relevant edge case or it will be considered incomplete.' Acceptance criteria are required. PM must define acceptance criteria addressing HIPAA constraints, minor confidentiality, notification scope, and delay handling before this ticket can be committed to a sprint."
+      }
+    ],
+    "structuralIssues": [
+      "No acceptance criteria present",
+      "No out of scope items defined",
+      "No assumptions documented",
+      "Ambiguous scope — uses words like 'all', 'any', and 'no age restriction' without defining boundaries",
+      "Technical prescription — specifies implementation details such as PDF download mechanism, email delivery method, and proxy login system rather than describing desired outcomes",
+      "Missing obvious edge cases — no handling defined for minors' right to confidential care (mental health, STI, reproductive health) which varies by jurisdiction and age",
+      "Missing obvious edge cases — no consideration of what happens when the minor turns 18 and access must be revoked",
+      "Missing obvious edge cases — no handling for situations where a clinician has flagged records as sensitive or confidential from guardians",
+      "Missing obvious edge cases — no handling for separated or divorced parents with differing custody and access rights",
+      "Missing obvious edge cases — no consideration of HIPAA minor privacy exceptions which may legally prohibit parental access to certain record types",
+      "Missing obvious edge cases — no handling for cases where the minor is an emancipated minor",
+      "Ambiguous scope — 'full medical record' and 'full details in the email body' are undefined and could expose highly sensitive clinical information without appropriate safeguards"
+    ],
+    "refinedTicket": {
+      "summary": "As a parent or legal guardian, I want to access my minor child's medical records through my proxy account so I can stay informed about their health",
+      "description": "Parents and legal guardians with an active proxy relationship should be able to view and download their minor child's medical records from within their existing proxy account access. This includes clinical notes, test results, and prescription history, subject to applicable restrictions based on the child's age, record sensitivity, custody status, and whether certain record types are legally protected from parental access. Access should reflect the correct scope of records permitted at any given time, and parents should be able to receive notifications when new information is added to their child's record. This ticket does not define the legal rules governing which record types are accessible — those rules must be confirmed before implementation begins.",
+      "acceptanceCriteria": [
+        "Given a parent has an active proxy relationship with a minor child, when they access the child's record, then they can only view record types that are permitted based on the child's age and applicable access rules defined by the product and clinical team",
+        "Given a parent attempts to access a record type that has been flagged as restricted or confidential by a clinician, when they view the child's record, then that restricted content is not visible to the parent",
+        "Given a parent is viewing their child's record, when they request a download of the record, then only the permitted and non-restricted records are included in the downloaded output",
+        "Given a minor child reaches the age of 18, when their birthday is reached, then the parent's proxy access to their medical records is automatically revoked",
+        "Given a parent has opted in to record notifications, when a new result or clinical note is added to the child's record, then the parent receives a notification that contains no sensitive clinical detail in the notification body itself",
+        "Given a proxy relationship exists, when the system evaluates access, then it applies access rules based on the specific parent-child relationship on record, not a blanket access grant to all proxy users",
+        "Given an emancipated minor's status has been recorded in the system, when a parent attempts to access their record, then access is denied regardless of any existing proxy relationship"
+      ],
+      "outOfScope": [
+        "Defining the legal or clinical rules that determine which record types parents may access by jurisdiction or age — this must be confirmed by clinical, legal, and compliance stakeholders before implementation",
+        "Building the proxy login or account linking system — this ticket assumes that system already exists",
+        "Determining how custody or divorce documentation is verified or stored",
+        "Defining how emancipated minor status is recorded or verified in the system",
+        "Any changes to how clinicians flag records as sensitive or confidential"
+      ],
+      "assumptions": [
+        "A proxy account relationship mechanism already exists and this feature builds on top of it",
+        "The definition of which record types are accessible to parents versus restricted from parental view has not been confirmed and must be defined by clinical, legal, and compliance teams before acceptance criteria can be fully validated",
+        "The age at which parental proxy access is revoked has not been confirmed — 18 is used as a placeholder based on standard legal adulthood but must be verified",
+        "The mechanism for recording emancipated minor status in the system does not yet exist or has not been confirmed",
+        "The rules governing access rights for separated or divorced parents with differing custody arrangements have not been defined and are not addressed in this ticket",
+        "Notification delivery method and format have not been confirmed — the acceptance criteria describe the outcome only",
+        "No verified facts were available to confirm any compliance, legal, or clinical requirements — all such rules are flagged as assumptions requiring stakeholder confirmation"
+      ]
+    },
+    "diff": {
+      "summary": {
+        "original": "As a parent, I want to see my 14-year-old's full medical record including mental health notes so I can monitor their health",
+        "revised": "As a parent or legal guardian, I want to access my minor child's medical records through my proxy account so I can stay informed about their health"
+      },
+      "description": {
+        "original": "Parents should have full access to all medical records for their minor children including clinical notes, mental health records, STI test results, and prescription history. The parent should be able to download a full PDF of the record at any time. Access should not require any additional verification beyond the existing proxy login. The feature should send the parent an email every time a new result or note is added to their child's record with the full details in the email body. There is no age restriction on this access.",
+        "revised": "Parents and legal guardians with an active proxy relationship should be able to view and download their minor child's medical records from within their existing proxy account access. This includes clinical notes, test results, and prescription history, subject to applicable restrictions based on the child's age, record sensitivity, custody status, and whether certain record types are legally protected from parental access. Access should reflect the correct scope of records permitted at any given time, and parents should be able to receive notifications when new information is added to their child's record. This ticket does not define the legal rules governing which record types are accessible — those rules must be confirmed before implementation begins."
+      },
+      "acceptanceCriteria": {
+        "original": "None provided",
+        "revised": "Seven acceptance criteria added in Given/When/Then format covering permitted record access, clinician-flagged restrictions, download scope, access revocation at age 18, notification content safety, relationship-specific access grants, and emancipated minor access denial"
+      }
+    },
+    "confluenceLinks": [
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/360449/Healthy+Humans+HIPAA+Compliance+Constraints",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/98306/Healthy+Humans+Known+Edge+Cases+Incident+History"
+    ],
+    "confluencePageCount": 3,
+    "confluencePageTitles": [
+      "Healthy Humans — Feature Backlog & Sprint Decisions",
+      "Healthy Humans — HIPAA & Compliance Constraints",
+      "Healthy Humans — Known Edge Cases & Incident History"
+    ],
+    "escalationMessage": "This ticket has 10 assumptions. Resolve the items in the assumed list before presenting to the team."
+  },
+  "confluencePages": [
+    {
+      "id": "1703958",
+      "title": "Healthy Humans — Feature Backlog & Sprint Decisions",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "360449",
+      "title": "Healthy Humans — HIPAA & Compliance Constraints",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/360449/Healthy+Humans+HIPAA+Compliance+Constraints",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "98306",
+      "title": "Healthy Humans — Known Edge Cases & Incident History",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/98306/Healthy+Humans+Known+Edge+Cases+Incident+History",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    }
+  ]
+}

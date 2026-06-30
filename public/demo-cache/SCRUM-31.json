@@ -1,0 +1,323 @@
+{
+  "ticket": {
+    "key": "SCRUM-31",
+    "summary": "As a patient, I want to video call my doctor so I can have a telehealth appointment without coming in",
+    "description": "Patient should be able to initiate a video call with their assigned provider directly from the portal. The call should be secure and HIPAA compliant. The system should send a reminder 10 minutes before the call. Call recordings should be stored in the patient record for future reference. Providers should be able to share their screen during the call to review lab results together. The feature should integrate with the existing appointment booking system so patients can book telehealth slots.",
+    "issueType": "Story",
+    "status": "Idea",
+    "priority": "High",
+    "assignee": null,
+    "reporter": "Ali Saeed",
+    "labels": [
+      "HIGH-ASSUMPTION-TEST"
+    ],
+    "acceptanceCriteria": "",
+    "storyPoints": null,
+    "components": [],
+    "rawFields": {
+      "statuscategorychangedate": "2026-06-23T18:18:40.956-0500",
+      "issuetype": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issuetype/10005",
+        "id": "10005",
+        "description": "Stories track functionality or features expressed as user goals.",
+        "iconUrl": "https://healthyhumans.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+        "name": "Story",
+        "subtask": false,
+        "avatarId": 10315,
+        "entityId": "f79d92b3-67d3-42f4-aab5-5c4f8a2a048b",
+        "hierarchyLevel": 0
+      },
+      "components": [],
+      "timespent": null,
+      "timeoriginalestimate": null,
+      "project": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/project/10000",
+        "id": "10000",
+        "key": "SCRUM",
+        "name": "Healthy Humans",
+        "projectTypeKey": "software",
+        "simplified": true,
+        "avatarUrls": {
+          "48x48": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+          "24x24": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+          "16x16": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+          "32x32": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+        }
+      },
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Patient should be able to initiate a video call with their assigned provider directly from the portal. The call should be secure and HIPAA compliant. The system should send a reminder 10 minutes before the call. Call recordings should be stored in the patient record for future reference. Providers should be able to share their screen during the call to review lab results together. The feature should integrate with the existing appointment booking system so patients can book telehealth slots."
+              }
+            ]
+          }
+        ]
+      },
+      "fixVersions": [],
+      "aggregatetimespent": null,
+      "customfield_10034": null,
+      "statusCategory": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      },
+      "resolution": null,
+      "timetracking": {},
+      "customfield_10015": null,
+      "security": null,
+      "attachment": [],
+      "aggregatetimeestimate": null,
+      "resolutiondate": null,
+      "workratio": -1,
+      "summary": "As a patient, I want to video call my doctor so I can have a telehealth appointment without coming in",
+      "issuerestriction": {
+        "issuerestrictions": {},
+        "shouldDisplay": true
+      },
+      "watches": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-31/watchers",
+        "watchCount": 1,
+        "isWatching": true
+      },
+      "lastViewed": null,
+      "creator": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "subtasks": [],
+      "created": "2026-06-23T18:18:40.680-0500",
+      "customfield_10020": null,
+      "customfield_10021": null,
+      "reporter": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "aggregateprogress": {
+        "progress": 0,
+        "total": 0
+      },
+      "priority": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/priority/2",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/priorities/high_new.svg",
+        "name": "High",
+        "id": "2"
+      },
+      "customfield_10001": null,
+      "labels": [
+        "HIGH-ASSUMPTION-TEST"
+      ],
+      "customfield_10016": null,
+      "environment": null,
+      "customfield_10019": "0|i0006n:",
+      "timeestimate": null,
+      "aggregatetimeoriginalestimate": null,
+      "versions": [],
+      "duedate": null,
+      "progress": {
+        "progress": 0,
+        "total": 0
+      },
+      "issuelinks": [],
+      "votes": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-31/votes",
+        "votes": 0,
+        "hasVoted": false
+      },
+      "comment": {
+        "comments": [],
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/10062/comment",
+        "maxResults": 0,
+        "total": 0,
+        "startAt": 0
+      },
+      "assignee": null,
+      "worklog": {
+        "startAt": 0,
+        "maxResults": 20,
+        "total": 0,
+        "worklogs": []
+      },
+      "updated": "2026-06-23T18:18:40.761-0500",
+      "status": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/status/10000",
+        "description": "",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/statuses/generic.png",
+        "name": "Idea",
+        "id": "10000",
+        "statusCategory": {
+          "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+          "id": 2,
+          "key": "new",
+          "colorName": "blue-gray",
+          "name": "To Do"
+        }
+      }
+    }
+  },
+  "analysis": {
+    "mode": "full",
+    "status": "not_ready",
+    "verifiedCount": 1,
+    "assumedCount": 7,
+    "verified": [
+      {
+        "claim": "The system integrates with the existing appointment booking system so patients can book telehealth slots",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Appointment booking: Patients can book appointments with assigned providers. Real-time FHIR Schedule availability check in place."
+      }
+    ],
+    "assumed": [
+      {
+        "claim": "Patient should be able to initiate a video call with their assigned provider directly from the portal",
+        "reason": "No documentation exists confirming video calling is a supported or planned feature. It does not appear in Built & Shipped, In Progress, or Planned sections.",
+        "pmAction": "Confirm whether video calling is in scope for any sprint. If new, requires formal scoping and backlog entry before development begins."
+      },
+      {
+        "claim": "The call should be secure and HIPAA compliant",
+        "reason": "No documentation confirms a video call feature exists or that a compliant video infrastructure has been selected or approved. HIPAA compliance for video is not addressed anywhere in the provided documentation.",
+        "pmAction": "PM must confirm which HIPAA-compliant video platform will be used and that it has been reviewed by compliance before this claim can be verified."
+      },
+      {
+        "claim": "The system should send a reminder 10 minutes before the call",
+        "reason": "Contradicts documented product decision. Documentation defines only two reminder triggers: 48-hour and 2-hour appointment reminders. A 10-minute reminder is not listed and no notification rule supports it.",
+        "pmAction": "PM must decide whether to add a 10-minute reminder trigger to the Notification & Messaging Rules documentation or align the ticket to the existing 48hr/2hr reminder schedule."
+      },
+      {
+        "claim": "Call recordings should be stored in the patient record for future reference",
+        "reason": "No documentation confirms that call recording storage is a supported capability. Storing recordings in the patient record raises HIPAA data retention and access control implications not addressed in any provided documentation.",
+        "pmAction": "PM must confirm whether call recording storage is in scope, identify where recordings will be stored, and ensure HIPAA compliance for stored recordings is documented before sprint inclusion."
+      },
+      {
+        "claim": "Providers should be able to share their screen during the call to review lab results together",
+        "reason": "No documentation confirms screen sharing capability exists or is planned. Screen sharing of lab results during a video call is not referenced anywhere in the provided documentation.",
+        "pmAction": "PM must confirm whether screen sharing is in scope and assess any HIPAA implications of sharing PHI via screen during a call."
+      },
+      {
+        "claim": "The feature should integrate with the existing appointment booking system so patients can book telehealth slots",
+        "reason": "While appointment booking is confirmed as built, there is no documentation confirming that telehealth as a specific appointment type or slot category is supported within the existing booking system.",
+        "pmAction": "PM must confirm whether the existing FHIR Schedule supports a telehealth appointment type and document this before the ticket can be scoped."
+      },
+      {
+        "claim": "Acceptance Criteria: none",
+        "reason": "The ticket contains no acceptance criteria, making it impossible to verify completeness or testability against any documented rules or standards.",
+        "pmAction": "PM must add acceptance criteria before this ticket enters a sprint, covering at minimum: HIPAA compliance validation, notification behavior, recording consent and storage, and integration touchpoints."
+      }
+    ],
+    "structuralIssues": [
+      "No acceptance criteria present",
+      "No out of scope items defined",
+      "No assumptions documented",
+      "Missing obvious edge cases for this type of feature: no mention of what happens if the connection drops mid-call",
+      "Missing obvious edge cases for this type of feature: no mention of what happens if the provider is late or does not join the call",
+      "Missing obvious edge cases for this type of feature: no mention of browser or device compatibility requirements",
+      "Missing obvious edge cases for this type of feature: no mention of what happens if the patient attempts to call outside of a scheduled appointment slot",
+      "Missing obvious edge cases for this type of feature: no mention of handling failed recording storage"
+    ],
+    "refinedTicket": {
+      "summary": "As a patient, I want to video call my doctor so I can have a telehealth appointment without coming in",
+      "description": "Patients should be able to initiate a video call with their assigned provider directly from the portal for a scheduled telehealth appointment. The call should be secure and HIPAA compliant. The system should send a reminder 10 minutes before the scheduled call time. Call recordings should be stored in the patient record for future reference. Providers should be able to share their screen during the call to review lab results together. This feature integrates with the existing appointment booking system, allowing patients to book telehealth slots; real-time FHIR Schedule availability is already in place to support this.",
+      "acceptanceCriteria": [
+        "Given a patient has a scheduled telehealth appointment, when they access the portal within the valid appointment window, then they can initiate a video call with their assigned provider.",
+        "Given a scheduled telehealth appointment exists, when 10 minutes remain before the start time, then the patient and provider each receive a reminder notification.",
+        "Given a patient attempts to initiate a video call outside of a scheduled appointment slot, when the request is made, then the system prevents the call from starting and displays an informative message.",
+        "Given a video call is in progress, when the connection drops for either participant, then both parties are notified and provided an option to rejoin the call.",
+        "Given a provider has not joined the call within a reasonable time after the scheduled start, when the patient is waiting, then the patient is shown a status message and given guidance on next steps.",
+        "Given a video call has concluded, when the system attempts to store the recording to the patient record, then a failure to store triggers an error notification and the recording is queued for retry rather than silently lost.",
+        "Given a provider is in an active call, when they choose to share their screen, then the patient can view the shared screen within the same call session."
+      ],
+      "outOfScope": [
+        "Group or multi-party video calls involving more than one provider or more than one patient.",
+        "Video calls initiated outside of the portal (e.g., third-party apps or direct links not tied to a scheduled appointment).",
+        "Automated clinical documentation or transcription of call recordings.",
+        "Changes to the existing appointment booking flow beyond enabling telehealth slot selection."
+      ],
+      "assumptions": [
+        "HIPAA compliance requirements for video transmission and recording storage are assumed to already be governed by existing platform-level infrastructure; no new compliance framework is being introduced by this ticket.",
+        "Browser and device compatibility requirements have not been confirmed and will need to be defined before implementation begins.",
+        "The definition of a 'valid appointment window' for initiating a call (e.g., how many minutes before or after the scheduled time a patient may join) has not been confirmed and must be agreed upon.",
+        "Consent to record calls by both the patient and provider is assumed to be handled, but the mechanism (in-call prompt vs. upfront consent at booking) has not been confirmed.",
+        "The retry or escalation process when a provider does not join a call has not been confirmed and will need input from clinical operations.",
+        "Recording storage location within the patient record and any retention policy have not been confirmed."
+      ]
+    },
+    "diff": {
+      "summary": {
+        "original": "As a patient, I want to video call my doctor so I can have a telehealth appointment without coming in",
+        "revised": "No change. Summary preserved as written."
+      },
+      "description": {
+        "original": "Patient should be able to initiate a video call with their assigned provider directly from the portal. The call should be secure and HIPAA compliant. The system should send a reminder 10 minutes before the call. Call recordings should be stored in the patient record for future reference. Providers should be able to share their screen during the call to review lab results together. The feature should integrate with the existing appointment booking system so patients can book telehealth slots.",
+        "revised": "Minimal edits to prose for clarity. Confirmed the appointment booking and FHIR Schedule integration using verified facts. All original requirements preserved. No new functional requirements added."
+      },
+      "acceptanceCriteria": {
+        "original": "None provided.",
+        "revised": "Seven acceptance criteria added in Given/When/Then format. Covers: initiating a call within a scheduled slot, 10-minute reminder, blocking calls outside scheduled slots, dropped connection handling, late or absent provider handling, failed recording storage handling, and provider screen share. All criteria are testable and reflect requirements stated in the original description plus structural edge cases identified in the ticket review."
+      }
+    },
+    "confluenceLinks": [
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/2195457/Healthy+Humans+Agent+0+Keyword+Patterns",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703978/Healthy+Humans+Notification+Messaging+Rules",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions"
+    ],
+    "confluencePageCount": 3,
+    "confluencePageTitles": [
+      "Healthy Humans — Agent 0 Keyword Patterns",
+      "Healthy Humans — Notification & Messaging Rules",
+      "Healthy Humans — Feature Backlog & Sprint Decisions"
+    ],
+    "escalationMessage": "This ticket has 7 assumptions. Resolve the items in the assumed list before presenting to the team."
+  },
+  "confluencePages": [
+    {
+      "id": "2195457",
+      "title": "Healthy Humans — Agent 0 Keyword Patterns",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/2195457/Healthy+Humans+Agent+0+Keyword+Patterns",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "1703978",
+      "title": "Healthy Humans — Notification & Messaging Rules",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703978/Healthy+Humans+Notification+Messaging+Rules",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "1703958",
+      "title": "Healthy Humans — Feature Backlog & Sprint Decisions",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    }
+  ]
+}

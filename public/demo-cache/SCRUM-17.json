@@ -1,0 +1,326 @@
+{
+  "ticket": {
+    "key": "SCRUM-17",
+    "summary": "Restrict proxy access for patients aged 12-17",
+    "description": "As an admin, I want proxy access for patients aged 12-17 to be restricted so that minor patient privacy is protected per HIPAA guidelines.\n\n*Acceptance Criteria:*\n- Parent/guardian proxy access is limited for patients aged 12-17\n- Restricted data types are defined and documented\n\n*Background:*\nReal documented challenge: Complaints about parent limited access for ages 12-17 and inappropriate parent/proxy access causing compliance concerns (Patient Portal Management Challenges, PMC11102060).",
+    "issueType": "Story",
+    "status": "Idea",
+    "priority": "Medium",
+    "assignee": null,
+    "reporter": "Ali Saeed",
+    "labels": [],
+    "acceptanceCriteria": "",
+    "storyPoints": null,
+    "components": [],
+    "rawFields": {
+      "statuscategorychangedate": "2026-06-20T12:58:25.583-0500",
+      "issuetype": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issuetype/10005",
+        "id": "10005",
+        "description": "Stories track functionality or features expressed as user goals.",
+        "iconUrl": "https://healthyhumans.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+        "name": "Story",
+        "subtask": false,
+        "avatarId": 10315,
+        "entityId": "f79d92b3-67d3-42f4-aab5-5c4f8a2a048b",
+        "hierarchyLevel": 0
+      },
+      "components": [],
+      "timespent": null,
+      "timeoriginalestimate": null,
+      "project": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/project/10000",
+        "id": "10000",
+        "key": "SCRUM",
+        "name": "Healthy Humans",
+        "projectTypeKey": "software",
+        "simplified": true,
+        "avatarUrls": {
+          "48x48": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+          "24x24": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+          "16x16": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+          "32x32": "https://healthyhumans.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+        }
+      },
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "As an admin, I want proxy access for patients aged 12-17 to be restricted so that minor patient privacy is protected per HIPAA guidelines.\n\n*Acceptance Criteria:*\n- Parent/guardian proxy access is limited for patients aged 12-17\n- Restricted data types are defined and documented\n\n*Background:*\nReal documented challenge: Complaints about parent limited access for ages 12-17 and inappropriate parent/proxy access causing compliance concerns (Patient Portal Management Challenges, PMC11102060)."
+              }
+            ]
+          }
+        ]
+      },
+      "fixVersions": [],
+      "aggregatetimespent": null,
+      "customfield_10034": null,
+      "statusCategory": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      },
+      "resolution": null,
+      "timetracking": {},
+      "customfield_10015": null,
+      "security": null,
+      "attachment": [],
+      "aggregatetimeestimate": null,
+      "resolutiondate": null,
+      "workratio": -1,
+      "summary": "Restrict proxy access for patients aged 12-17",
+      "issuerestriction": {
+        "issuerestrictions": {},
+        "shouldDisplay": true
+      },
+      "watches": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-17/watchers",
+        "watchCount": 1,
+        "isWatching": true
+      },
+      "lastViewed": null,
+      "creator": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "subtasks": [],
+      "created": "2026-06-20T12:58:25.297-0500",
+      "customfield_10020": [
+        {
+          "id": 1,
+          "name": "SCRUM Sprint 1",
+          "state": "active",
+          "boardId": 1,
+          "goal": "",
+          "startDate": "2026-06-20T18:00:33.814Z",
+          "endDate": "2026-07-04T18:00:29.000Z"
+        }
+      ],
+      "customfield_10021": null,
+      "reporter": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/user?accountId=70121%3Adc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "accountId": "70121:dc952096-0e04-48bc-9dda-92c62c2bddbd",
+        "emailAddress": "alisaeed786@gmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "24x24": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "16x16": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png",
+          "32x32": "https://secure.gravatar.com/avatar/d2f548de1eaa50f34213f3917ee9b01f?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-1.png"
+        },
+        "displayName": "Ali Saeed",
+        "active": true,
+        "timeZone": "America/Chicago",
+        "accountType": "atlassian"
+      },
+      "aggregateprogress": {
+        "progress": 0,
+        "total": 0
+      },
+      "priority": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/priority/3",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/priorities/medium_new.svg",
+        "name": "Medium",
+        "id": "3"
+      },
+      "customfield_10001": null,
+      "labels": [],
+      "customfield_10016": null,
+      "environment": null,
+      "customfield_10019": "0|i0003j:",
+      "timeestimate": null,
+      "aggregatetimeoriginalestimate": null,
+      "versions": [],
+      "duedate": null,
+      "progress": {
+        "progress": 0,
+        "total": 0
+      },
+      "issuelinks": [],
+      "votes": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/SCRUM-17/votes",
+        "votes": 0,
+        "hasVoted": false
+      },
+      "comment": {
+        "comments": [],
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/issue/10016/comment",
+        "maxResults": 0,
+        "total": 0,
+        "startAt": 0
+      },
+      "assignee": null,
+      "worklog": {
+        "startAt": 0,
+        "maxResults": 20,
+        "total": 0,
+        "worklogs": []
+      },
+      "updated": "2026-06-20T12:59:42.990-0500",
+      "status": {
+        "self": "https://healthyhumans.atlassian.net/rest/api/3/status/10000",
+        "description": "",
+        "iconUrl": "https://healthyhumans.atlassian.net/images/icons/statuses/generic.png",
+        "name": "Idea",
+        "id": "10000",
+        "statusCategory": {
+          "self": "https://healthyhumans.atlassian.net/rest/api/3/statuscategory/2",
+          "id": 2,
+          "key": "new",
+          "colorName": "blue-gray",
+          "name": "To Do"
+        }
+      }
+    }
+  },
+  "analysis": {
+    "mode": "full",
+    "status": "caution",
+    "verifiedCount": 2,
+    "assumedCount": 5,
+    "verified": [
+      {
+        "claim": "Role-based access control exists in the system",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Role-based access control: Four roles live: Patient, Provider, Care Coordinator, Admin."
+      },
+      {
+        "claim": "Audit logging is HIPAA compliant",
+        "source": "Healthy Humans — Feature Backlog & Sprint Decisions",
+        "quote": "Audit logging: Immutable audit trail for all data access events. HIPAA compliant."
+      }
+    ],
+    "assumed": [
+      {
+        "claim": "Parent/guardian proxy access is limited for patients aged 12-17",
+        "reason": "No documentation references proxy access, guardian roles, or age-based access restrictions. This feature does not appear in any documented role-based access control configuration.",
+        "pmAction": "PM must confirm whether proxy/guardian access is an existing or planned capability and define how it interacts with the four documented roles."
+      },
+      {
+        "claim": "Proxy access restrictions for ages 12-17 are required per HIPAA guidelines",
+        "reason": "No documentation references HIPAA requirements specific to minor patient privacy or age-based proxy restrictions. Cannot be verified against provided documentation.",
+        "pmAction": "PM must provide documented HIPAA requirement or legal guidance and ensure it is captured in Confluence before sprint inclusion."
+      },
+      {
+        "claim": "Restricted data types are defined and documented",
+        "reason": "No documentation references restricted data types for minor patients or any age-based data restriction definitions anywhere in the provided pages.",
+        "pmAction": "PM must define and document which data types are restricted for patients aged 12-17 before this ticket can be estimated or developed."
+      },
+      {
+        "claim": "Complaints about parent limited access for ages 12-17 and inappropriate parent/proxy access are a real documented challenge (PMC11102060)",
+        "reason": "No documentation in the provided Confluence pages references PMC11102060 or any complaints about proxy or parent access for minor patients.",
+        "pmAction": "PM must link or surface the referenced source (PMC11102060) internally and confirm it has been reviewed and accepted as a valid basis for this ticket."
+      },
+      {
+        "claim": "An admin role can configure or restrict proxy access",
+        "reason": "While an Admin role is listed as one of four live roles, no documentation describes admin capabilities related to proxy configuration or access restriction for specific patient age groups.",
+        "pmAction": "PM must define and document admin permissions related to proxy access management before development begins."
+      }
+    ],
+    "structuralIssues": [
+      "Acceptance criteria are not testable: 'proxy access is limited' is vague and does not define measurable conditions for what limited means",
+      "Acceptance criteria are not testable: 'Restricted data types are defined and documented' does not specify which data types, where they are documented, or how completeness is verified",
+      "No out of scope items defined",
+      "No assumptions documented",
+      "Ambiguous scope: 'Parent/guardian proxy access is limited' does not specify which specific data types, actions, or portal features are restricted versus allowed",
+      "Missing edge case: no criteria for how the system handles a patient who turns 12 or 18 during an active proxy session or access period",
+      "Missing edge case: no criteria for proxy access granted before the patient turned 12 and what happens when they enter the 12-17 range",
+      "Missing edge case: no criteria for court-ordered guardianship or legal custody scenarios that may differ from standard parent proxy rules",
+      "Missing edge case: no criteria for what happens when a patient in the 12-17 range has a medical condition requiring full proxy oversight",
+      "Missing edge case: no criteria for audit logging or alerting when restricted data is accessed or attempted to be accessed by a proxy"
+    ],
+    "refinedTicket": {
+      "summary": "Restrict proxy access for patients aged 12–17 to protect minor patient privacy",
+      "description": "As an admin, I want proxy access for patients aged 12–17 to be restricted so that minor patient privacy is protected per HIPAA guidelines.\n\nComplaints have been filed regarding parent and proxy access to sensitive adolescent patient data, raising compliance concerns. This ticket defines the access restrictions that must be enforced on the patient portal for proxies of patients in the 12–17 age range. Specific restricted data types and allowed actions must be formally defined prior to implementation and documented in a location accessible to the admin role.\n\nBackground: Real documented challenge: Complaints about parent limited access for ages 12–17 and inappropriate parent/proxy access causing compliance concerns (Patient Portal Management Challenges, PMC11102060).",
+      "acceptanceCriteria": [
+        "Given a proxy user attempts to access a restricted data type for a patient aged 12–17, when the access attempt is made, then the system denies access and displays an appropriate restriction message identifying which data category is blocked.",
+        "Given the product team and compliance stakeholders have aligned on restricted versus allowed data types for 12–17 patients, when the feature is released, then a finalized list of restricted and allowed data types for proxy access is documented in the admin-accessible product specification and referenced in the system's role-based access control configuration.",
+        "Given a patient turns 12 or 17 during an active proxy access period, when the system evaluates proxy permissions, then the proxy's access is automatically updated to reflect the rules applicable to the patient's current age group without requiring manual intervention.",
+        "Given a proxy was granted access before a patient turned 12, when that patient enters the 12–17 age range, then the proxy's existing access is retroactively restricted to the defined 12–17 ruleset.",
+        "Given a proxy attempts to access a restricted data type for a patient aged 12–17, when the attempt is made, then an immutable audit log entry is created capturing the proxy identity, patient record, data type attempted, timestamp, and outcome, consistent with the existing HIPAA-compliant audit trail.",
+        "Given a court-ordered guardian or legal custodian is flagged as such in the system for a patient aged 12–17, when proxy access rules are evaluated, then their access level is configurable by an admin independently of standard parent proxy rules.",
+        "Given a patient aged 12–17 has a documented medical condition requiring full proxy oversight, when an admin enables an exception for that patient, then the designated proxy may be granted expanded access beyond the default 12–17 restrictions, and this exception is recorded in the audit log."
+      ],
+      "outOfScope": [
+        "Proxy access rules for patients under age 12 or age 18 and older.",
+        "Changes to proxy access controls for any role other than parent/guardian proxies of 12–17 patients.",
+        "Modifications to the existing four role-based access control roles (Patient, Provider, Care Coordinator, Admin).",
+        "Defining or modifying general HIPAA compliance policies beyond what is enforced by the access restriction logic described here.",
+        "UI or UX redesign of the proxy management interface beyond what is necessary to surface restriction messages and admin exception controls."
+      ],
+      "assumptions": [
+        "The specific list of restricted versus allowed data types for 12–17 proxy access has not yet been finalized and must be confirmed by compliance and clinical stakeholders before acceptance criteria 2 can be verified.",
+        "It is assumed the system currently stores and evaluates patient date of birth in a way that allows real-time or near-real-time age-based rule enforcement; this has not been confirmed.",
+        "It is assumed that court-ordered or legal custodian status can be flagged on a proxy record by an admin; the existence of this field or workflow has not been confirmed.",
+        "It is assumed that a medical exception override mechanism for proxy access can be scoped to individual patient records by an admin; this capability has not been confirmed in the current system.",
+        "It is assumed that the existing immutable HIPAA-compliant audit log can capture failed or blocked access attempts in addition to successful ones; this specific behavior has not been explicitly confirmed.",
+        "The definition of 'active proxy session' for age-boundary transition scenarios (AC3) will need to be clarified by engineering to determine whether transitions are enforced in real time or at next login."
+      ]
+    },
+    "diff": {
+      "summary": {
+        "original": "Restrict proxy access for patients aged 12-17",
+        "revised": "Restrict proxy access for patients aged 12–17 to protect minor patient privacy"
+      },
+      "description": {
+        "original": "As an admin, I want proxy access for patients aged 12-17 to be restricted so that minor patient privacy is protected per HIPAA guidelines.",
+        "revised": "As an admin, I want proxy access for patients aged 12–17 to be restricted so that minor patient privacy is protected per HIPAA guidelines.\n\nComplaints have been filed regarding parent and proxy access to sensitive adolescent patient data, raising compliance concerns. This ticket defines the access restrictions that must be enforced on the patient portal for proxies of patients in the 12–17 age range. Specific restricted data types and allowed actions must be formally defined prior to implementation and documented in a location accessible to the admin role.\n\nBackground retained and clarified from original ticket."
+      },
+      "acceptanceCriteria": {
+        "original": "1. Parent/guardian proxy access is limited for patients aged 12–17 (vague, not testable).\n2. Restricted data types are defined and documented (does not specify which types, where documented, or how verified).\nNo edge cases for age transitions, retroactive access, court-ordered guardians, medical exceptions, or audit logging of blocked attempts.",
+        "revised": "Replaced both original criteria with 7 testable Given/When/Then acceptance criteria covering: access denial with restriction messaging, documented data type list in admin-accessible spec, real-time age-transition enforcement, retroactive restriction when patient enters 12–17 range, immutable audit logging of restricted access attempts using confirmed HIPAA-compliant audit trail, admin-configurable access for court-ordered guardians, and admin-managed medical exception overrides with audit logging."
+      }
+    },
+    "confluenceLinks": [
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/2195457/Healthy+Humans+Agent+0+Keyword+Patterns",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703978/Healthy+Humans+Notification+Messaging+Rules",
+      "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions"
+    ],
+    "confluencePageCount": 3,
+    "confluencePageTitles": [
+      "Healthy Humans — Agent 0 Keyword Patterns",
+      "Healthy Humans — Notification & Messaging Rules",
+      "Healthy Humans — Feature Backlog & Sprint Decisions"
+    ]
+  },
+  "confluencePages": [
+    {
+      "id": "2195457",
+      "title": "Healthy Humans — Agent 0 Keyword Patterns",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/2195457/Healthy+Humans+Agent+0+Keyword+Patterns",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "1703978",
+      "title": "Healthy Humans — Notification & Messaging Rules",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703978/Healthy+Humans+Notification+Messaging+Rules",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    },
+    {
+      "id": "1703958",
+      "title": "Healthy Humans — Feature Backlog & Sprint Decisions",
+      "url": "https://healthyhumans.atlassian.net/wiki/spaces/~70121dc9520960e0448bc9dda92c62c2bddbd/pages/1703958/Healthy+Humans+Feature+Backlog+Sprint+Decisions",
+      "space": "Ali Saeed",
+      "excerpt": ""
+    }
+  ]
+}
